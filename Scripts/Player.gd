@@ -5,9 +5,17 @@ var direction : Vector2 = Vector2()
 var movespeed : int = 200
 var bullet_speed : int = 2000
 
+onready var animation_tree = $AnimationTree # get the AnimationTree node
+onready var sprite = $Sprite # get the Sprite node
+
+func _ready():
+	return
+	
+
 func _physics_process(delta):
 	# Read input every frame
 	read_movement_input()
+	handle_animation(velocity)
 
 func read_movement_input():
 	# Handles movement
@@ -31,6 +39,18 @@ func read_movement_input():
 		
 	velocity = velocity.normalized()
 	velocity = move_and_slide(velocity * movespeed)
+	
+func handle_animation(velocity: Vector2):
+	if velocity.x > 0:
+		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
+	elif velocity.x < 0:
+		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
+	if velocity.x == 0 and velocity.y == 0:
+		animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
+	else:
+		animation_tree["parameters/playback"].travel("Run") # set AnimationTree state to "Idle"
+	return
+	
 
 func _unhandled_input(event):
 	# Handles shooting

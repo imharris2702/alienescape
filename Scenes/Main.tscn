@@ -8,6 +8,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Bullet" parent="." instance=ExtResource( 2 )]
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 214, 143 )
@@ -21,3 +22,4 @@ script = ExtResource( 5 )
 
 [node name="TestRoom" parent="." instance=ExtResource( 6 )]
 position = Vector2( 220, 163 )
+z_index = -1

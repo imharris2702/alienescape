@@ -1,9 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/police-Sheet.png" type="Texture" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 16 )
 
 [sub_resource type="Animation" id=10]
 resource_name = "Run"
@@ -56,14 +53,14 @@ tracks/0/keys = {
 "values": [ 0, 2, 1 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "idle"
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Run"
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Shoot"
-
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
@@ -78,26 +75,29 @@ animation = "idle"
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachine" id=4]
+states/Idle/node = SubResource( 3 )
+states/Idle/position = Vector2( 738, 181 )
 states/Run/node = SubResource( 11 )
 states/Run/position = Vector2( 819, 52 )
 states/Shoot/node = SubResource( 7 )
 states/Shoot/position = Vector2( 642, 52 )
-states/idle/node = SubResource( 3 )
-states/idle/position = Vector2( 738, 181 )
-transitions = [ "idle", "Shoot", SubResource( 8 ), "Shoot", "idle", SubResource( 9 ), "Shoot", "Run", SubResource( 12 ), "Run", "Shoot", SubResource( 13 ), "Run", "idle", SubResource( 14 ), "idle", "Run", SubResource( 15 ) ]
-start_node = "idle"
+transitions = [ "Idle", "Shoot", SubResource( 8 ), "Shoot", "Idle", SubResource( 9 ), "Shoot", "Run", SubResource( 12 ), "Run", "Shoot", SubResource( 13 ), "Run", "Idle", SubResource( 14 ), "Idle", "Run", SubResource( 15 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 3, -43 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[sub_resource type="RectangleShape2D" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 16 )
 
 [node name="Enemy" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 16
-frame = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Run = SubResource( 10 )
@@ -109,3 +109,13 @@ tree_root = SubResource( 4 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 5 )
+
+[node name="Collider2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 12 )
+scale = Vector2( 0.483436, -0.29773 )
+shape = SubResource( 16 )
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+shape = SubResource( 1 )
