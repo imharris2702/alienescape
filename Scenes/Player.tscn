@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/red hood itch free Copy-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/PlayerBullet.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.5, 16 )
@@ -9,6 +10,7 @@ extents = Vector2( 8.5, 16 )
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 44, 13 )
 script = ExtResource( 1 )
+Bullet = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="Sprite" parent="."]
 position = Vector2( 4, -15 )
@@ -18,3 +20,6 @@ vframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( 21, 0 )
