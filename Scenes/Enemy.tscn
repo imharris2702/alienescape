@@ -1,9 +1,43 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/police-Sheet.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 16 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Shoot"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"
@@ -22,12 +56,35 @@ tracks/0/keys = {
 "values": [ 0, 2, 1 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Shoot"
+
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
 [sub_resource type="AnimationNodeStateMachine" id=4]
+states/Run/node = SubResource( 11 )
+states/Run/position = Vector2( 819, 52 )
+states/Shoot/node = SubResource( 7 )
+states/Shoot/position = Vector2( 642, 52 )
 states/idle/node = SubResource( 3 )
-states/idle/position = Vector2( 282, 92 )
+states/idle/position = Vector2( 738, 181 )
+transitions = [ "idle", "Shoot", SubResource( 8 ), "Shoot", "idle", SubResource( 9 ), "Shoot", "Run", SubResource( 12 ), "Run", "Shoot", SubResource( 13 ), "Run", "idle", SubResource( 14 ), "idle", "Run", SubResource( 15 ) ]
 start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
@@ -36,13 +93,15 @@ start_node = "idle"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 15
-frame = 1
+hframes = 16
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Run = SubResource( 10 )
+anims/Shoot = SubResource( 6 )
 anims/idle = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

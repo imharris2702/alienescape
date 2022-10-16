@@ -2,6 +2,12 @@ extends KinematicBody2D
 
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
+var movespeed : int = 200
+var bullet_speed : int = 2000
+
+func _physics_process(delta):
+	# Read input every frame
+	read_movement_input()
 
 func read_movement_input():
 	# Handles movement
@@ -24,11 +30,7 @@ func read_movement_input():
 		direction = Vector2(1, 0)
 		
 	velocity = velocity.normalized()
-	velocity = move_and_slide(velocity * 200)
-
-func _physics_process(delta):
-	# Read input every frame
-	read_movement_input()
+	velocity = move_and_slide(velocity * movespeed)
 
 func _unhandled_input(event):
 	# Handles shooting
