@@ -3,15 +3,14 @@
 [ext_resource path="res://assets/bullets-Sheet.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.71144, 10 )
+extents = Vector2( 4, 4 )
 
 [node name="Bullet" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 8, 11, 15, 10 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.03742, 0.512336 )
-shape = SubResource( 1 )
+region_rect = Rect2( 42, 11, 10, 10 )
