@@ -54,8 +54,10 @@ func read_movement_input():
 func handle_animation():
 	if velocity.x > 0:
 		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
+		$EndOfGun.position.x = abs($EndOfGun.position.x)
 	elif velocity.x < 0:
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
+		$EndOfGun.position.x = abs($EndOfGun.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
 
 		if idle_counter % 250 == 0:
