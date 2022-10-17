@@ -63,9 +63,7 @@ func handle_animation():
 	else:
 		animation_tree["parameters/playback"].travel("Run") # set AnimationTree state to "Run"
 	return
-	
 
-func _unhandled_input(event):
-	# Handles shooting
-	if event.is_action_pressed("shoot"):
-		print("player shot")
+func take_bullet_damage():
+	animation_tree["parameters/playback"].travel("Death")
+	isDead = true

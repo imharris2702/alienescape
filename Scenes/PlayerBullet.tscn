@@ -6,16 +6,17 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.71144, 10 )
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.779708, 0.810324 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 8, 11, 15, 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.03742, 0.512336 )
+scale = Vector2( 0.890212, 0.409026 )
 shape = SubResource( 1 )
 
 [node name="KillTimer" type="Timer" parent="."]

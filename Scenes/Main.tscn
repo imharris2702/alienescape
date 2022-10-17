@@ -22,7 +22,25 @@ current = true
 zoom = Vector2( 0.4, 0.4 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 358, 147 )
+position = Vector2( 117, 88 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 211, 278 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 131, 310 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 356, 199 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 377, 114 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 396, 130 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 87, 188 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 5 )

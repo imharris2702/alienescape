@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/police0-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
@@ -130,6 +130,14 @@ graph_offset = Vector2( -64, -22 )
 
 [sub_resource type="RectangleShape2D" id=16]
 
+[sub_resource type="GDScript" id=21]
+script/source = "extends Area2D
+
+func _on_HitBoxArea_area_entered(area):
+	if area.is_in_group(\"bullet\"):
+		get_parent().take_bullet_damage()
+"
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 16 )
 
@@ -162,8 +170,11 @@ scale = Vector2( 0.483436, -0.29773 )
 shape = SubResource( 16 )
 
 [node name="HitBoxArea" type="Area2D" parent="."]
+script = SubResource( 21 )
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
 position = Vector2( 0, -1 )
 scale = Vector2( 1, 0.960001 )
 shape = SubResource( 1 )
+
+[connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]

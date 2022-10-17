@@ -57,7 +57,7 @@ func handle_animation():
 	elif velocity.x < 0:
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
 	if velocity.x == 0 and velocity.y == 0:
-		print(idle_counter)
+
 		if idle_counter % 250 == 0:
 			animation_tree["parameters/playback"].travel("Idle1") # set AnimationTree state to "Idle1"
 		elif isIdle == false:
