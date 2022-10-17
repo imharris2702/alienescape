@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_fired_bullet(bullet, position, direction)
+
 export (PackedScene) var Bullet # Allows for bullet to be attached
 
 var velocity : Vector2 = Vector2()
@@ -64,8 +66,8 @@ func _unhandled_input(event):
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
 	var bullet_instance = Bullet.instance()
-	add_child(bullet_instance)
-	bullet_instance.global_position = end_of_gun.global_position
 	var target = get_global_mouse_position()
-	var direction_to_mouse = bullet_instance.global_position.direction_to(target).normalized()
-	bullet_instance.set_direction(direction_to_mouse)
+	# Bullet fires in the direction of the mouse
+	# TODO: Set up to connect to a reticule connected to the mouse to get angle for bullet
+	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)

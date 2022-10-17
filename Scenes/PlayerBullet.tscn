@@ -17,3 +17,9 @@ region_rect = Rect2( 8, 11, 15, 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.03742, 0.512336 )
 shape = SubResource( 1 )
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
