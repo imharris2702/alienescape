@@ -19,11 +19,11 @@ func _init():
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed
-		global_position += velocity
-		rotation += 15
+		global_position += velocity * .5
 
 func set_direction(direction: Vector2):
 	self.direction = direction
+	self.rotation = direction.angle()
 	# TODO: Set rotation with reticule when that is set up
 
 # Removes bullet from memory on timeout (can adjust time)

@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/bullets-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://assets/PlayerBullet-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerBullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.71144, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Explode"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Flying"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource( 2 )
@@ -12,8 +32,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.779708, 0.810324 )
 texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 8, 11, 15, 10 )
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.890212, 0.409026 )
@@ -22,5 +41,10 @@ shape = SubResource( 1 )
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flying"
+anims/Explode = SubResource( 3 )
+anims/Flying = SubResource( 2 )
 
 [connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
