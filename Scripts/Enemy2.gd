@@ -4,7 +4,7 @@ extends KinematicBody2D
 # physics vars
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
-var movespeed : int = 20
+var movespeed : int = 8
 var bullet_speed : int = 2000
 var isDead : bool = false
 
@@ -69,8 +69,10 @@ func handle_animation():
 		return
 	if velocity.x > 0:
 		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
+		sprite.position.x = abs(sprite.position.x)
 	elif velocity.x < 0:
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
+		sprite.position.x = abs(sprite.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
 		animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
 	else:
@@ -78,7 +80,7 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
-	die()
+	pass
 	
 func die():
 	animation_tree["parameters/playback"].travel("Death")
