@@ -4,11 +4,12 @@ extends KinematicBody2D
 # physics vars
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
-var movespeed : int = 200
+var movespeed : int = 20
 var bullet_speed : int = 2000
 var isDead : bool = false
 
 # animation vars
+const player_proximity_distance = 120
 
 onready var animation_tree = $AnimationTree # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
@@ -18,13 +19,25 @@ func _ready():
 	
 
 func _physics_process(_delta):
+	if isDead: return
 	# Read input every frame
 	if false:
 		read_movement_input()
+	else:
+		handle_movement_ai()
 	handle_animation()
+	
+func handle_movement_ai():
+	var player_pos = get_parent().get_node("Player").position
+	direction  = player_pos - position
+	var distance = direction.length()
+	if distance <= player_proximity_distance:
+		velocity = Vector2.ZERO
+		return
+	velocity = direction.normalized() * movespeed
+	move_and_slide(velocity)
 
 func read_movement_input():
-	if isDead: return
 	# Handles movement
 	velocity = Vector2()
 	
@@ -66,4 +79,6 @@ func handle_animation():
 
 func take_bullet_damage():
 	animation_tree["parameters/playback"].travel("Death")
+	$Collider2D.disabled = true # not working
+	$HitBoxArea.set_deferred("monitoring", false)
 	isDead = true

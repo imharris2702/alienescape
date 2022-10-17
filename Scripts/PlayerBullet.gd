@@ -1,7 +1,7 @@
 extends Area2D
 class_name PlayerBullet
 
-export (int) var speed = 10
+export (int) var speed = 5
 
 onready var kill_timer = $KillTimer
 
@@ -19,7 +19,7 @@ func _init():
 func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		var velocity = direction * speed
-		global_position += velocity * .5
+		global_position += velocity
 
 func set_direction(direction: Vector2):
 	self.direction = direction
@@ -33,6 +33,5 @@ func _on_KillTimer_timeout():
 
 func _on_Bullet_area_entered(area):
 	if !area.is_in_group("player"):
-		print(area.get_name())
 		$AnimationPlayer.play("Explode")
-		direction *= .05
+		direction *= .03
