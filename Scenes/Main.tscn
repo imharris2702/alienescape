@@ -9,17 +9,17 @@
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 214, 143 )
-scale = Vector2( 0.485393, 0.512382 )
-current = true
-
 [node name="TestRoom" parent="." instance=ExtResource( 6 )]
 position = Vector2( 220, 163 )
 z_index = -1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 31, 107 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2( 0.485393, 0.512382 )
+current = true
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 358, 147 )
