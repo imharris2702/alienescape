@@ -29,3 +29,10 @@ func set_direction(direction: Vector2):
 # Removes bullet from memory on timeout (can adjust time)
 func _on_KillTimer_timeout():
 	queue_free()
+
+
+func _on_Bullet_area_entered(area):
+	if !area.is_in_group("player"):
+		print(area.get_name())
+		$AnimationPlayer.play("Explode")
+		direction *= .05
