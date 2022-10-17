@@ -1,25 +1,170 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/red hood itch free Copy-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/alien3-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/PlayerBullet.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle2"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 27, 28, 29 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "RunWGun"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20, 21, 22, 23, 24 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle2"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "RunWGun"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachine" id=6]
+states/Idle/node = SubResource( 5 )
+states/Idle/position = Vector2( 586, 216 )
+states/Idle1/node = SubResource( 11 )
+states/Idle1/position = Vector2( 780, 100 )
+states/Run/node = SubResource( 14 )
+states/Run/position = Vector2( 518.877, 40 )
+states/RunWGun/node = SubResource( 15 )
+states/RunWGun/position = Vector2( 390.877, 193 )
+transitions = [ "Idle", "Idle1", SubResource( 12 ), "Idle1", "Idle", SubResource( 13 ), "Idle", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Idle", "RunWGun", SubResource( 18 ), "RunWGun", "Idle", SubResource( 19 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -130.123, 7 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.5, 16 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 44, 13 )
 script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="Sprite" parent="."]
-position = Vector2( 4, -15 )
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-hframes = 11
-vframes = 11
+hframes = 8
+vframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+anims/Idle2 = SubResource( 9 )
+anims/RESET = SubResource( 4 )
+anims/Run = SubResource( 8 )
+anims/RunWGun = SubResource( 10 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 6 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 7 )
+
+[node name="Collider2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 11 )
+scale = Vector2( 0.561397, -0.417731 )
+shape = SubResource( 2 )
+
+[node name="HitBoxArea" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+position = Vector2( 0, -3 )
+scale = Vector2( 0.702547, 0.99184 )
 shape = SubResource( 3 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( 21, 0 )
+position = Vector2( 7, -5 )
