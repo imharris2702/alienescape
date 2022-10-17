@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/alien3-Sheet.png" type="Texture" id=2]
@@ -112,18 +112,20 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
 [sub_resource type="AnimationNodeStateMachine" id=6]
 states/Idle/node = SubResource( 5 )
 states/Idle/position = Vector2( 586, 216 )
 states/Idle1/node = SubResource( 11 )
-states/Idle1/position = Vector2( 780, 100 )
+states/Idle1/position = Vector2( 792, 112 )
 states/Run/node = SubResource( 14 )
 states/Run/position = Vector2( 518.877, 40 )
 states/RunWGun/node = SubResource( 15 )
 states/RunWGun/position = Vector2( 390.877, 193 )
-transitions = [ "Idle", "Idle1", SubResource( 12 ), "Idle1", "Idle", SubResource( 13 ), "Idle", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Idle", "RunWGun", SubResource( 18 ), "RunWGun", "Idle", SubResource( 19 ) ]
+transitions = [ "Idle", "Idle1", SubResource( 12 ), "Idle1", "Idle", SubResource( 13 ), "Idle", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Idle", "RunWGun", SubResource( 18 ), "RunWGun", "Idle", SubResource( 19 ), "Idle1", "Run", SubResource( 20 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -130.123, 7 )
+graph_offset = Vector2( -239.123, -11 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
