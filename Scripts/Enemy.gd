@@ -78,7 +78,12 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
+	die()
+	
+func die():
 	animation_tree["parameters/playback"].travel("Death")
-	$Collider2D.disabled = true # not working
-	$HitBoxArea.set_deferred("monitoring", false)
+	$Collider2D.set_deferred("disabled", true)
+	$HitBoxArea/HitBox.set_deferred("disabled", true)
+	z_index -= 1
 	isDead = true
+	

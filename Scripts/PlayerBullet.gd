@@ -34,4 +34,10 @@ func _on_KillTimer_timeout():
 func _on_Bullet_area_entered(area):
 	if !area.is_in_group("player"):
 		$AnimationPlayer.play("Explode")
-		direction *= .03
+		$Collider.set_deferred("disabled", true)
+		direction *= .03 # keep momentum slightly
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Explode":
+		queue_free()
