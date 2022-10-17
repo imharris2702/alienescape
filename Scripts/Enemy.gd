@@ -1,21 +1,15 @@
 extends KinematicBody2D
 
-signal player_fired_bullet(bullet, position, direction)
-
-export (PackedScene) var Bullet # Allows for bullet to be attached
 
 # physics vars
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 200
 var bullet_speed : int = 2000
+var isDead : bool = false
 
 # animation vars
-var idle_counter = 20
-var isIdle : bool = true
 
-
-onready var end_of_gun = $EndOfGun # get EndOfGun
 onready var animation_tree = $AnimationTree # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
 
@@ -23,12 +17,14 @@ func _ready():
 	return
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Read input every frame
-	read_movement_input()
+	if false:
+		read_movement_input()
 	handle_animation()
 
 func read_movement_input():
+	if isDead: return
 	# Handles movement
 	velocity = Vector2()
 	
@@ -52,33 +48,24 @@ func read_movement_input():
 	velocity = move_and_slide(velocity * movespeed)
 	
 func handle_animation():
+	if isDead: return
+	if Input.is_physical_key_pressed(16777220):
+		print("death should occur")
+		animation_tree["parameters/playback"].travel("Death")
+		isDead = true
+		return
 	if velocity.x > 0:
 		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
 	elif velocity.x < 0:
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
 	if velocity.x == 0 and velocity.y == 0:
-		print(idle_counter)
-		if idle_counter % 250 == 0:
-			animation_tree["parameters/playback"].travel("Idle1") # set AnimationTree state to "Idle1"
-		elif isIdle == false:
-			animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
-			isIdle = true
-		idle_counter += 1
+		animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
 	else:
 		animation_tree["parameters/playback"].travel("Run") # set AnimationTree state to "Run"
-		isIdle = false
 	return
+	
 
 func _unhandled_input(event):
 	# Handles shooting
 	if event.is_action_pressed("shoot"):
-		shoot()
-
-# Shooting code, should allow to disconnect before gun is picked up
-func shoot():
-	var bullet_instance = Bullet.instance()
-	var target = get_global_mouse_position()
-	# Bullet fires in the direction of the mouse
-	# TODO: Set up to connect to a reticule connected to the mouse to get angle for bullet
-	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
-	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+		print("player shot")
