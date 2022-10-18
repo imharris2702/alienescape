@@ -80,6 +80,5 @@ func shoot():
 	var bullet_instance = Bullet.instance()
 	var target = get_global_mouse_position()
 	# Bullet fires in the direction of the mouse
-	# TODO: Set up to connect to a reticule connected to the mouse to get angle for bullet
 	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
 	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)

@@ -20,7 +20,6 @@ func _physics_process(delta):
 func set_direction(direction: Vector2):
 	self.direction = direction
 	self.rotation = direction.angle()
-	# TODO: Set rotation with reticule when that is set up
 
 # Removes bullet from memory on timeout (can adjust time)
 func _on_KillTimer_timeout():
