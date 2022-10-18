@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/BulletManager.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/BulletManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/TestObstacle.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
@@ -23,8 +23,7 @@ scale = Vector2( 0.485393, 0.512382 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
 
-[node name="BulletManager" type="Node2D" parent="."]
-script = ExtResource( 5 )
+[node name="BulletManager" parent="." instance=ExtResource( 5 )]
 
 [node name="Enemies" type="Node" parent="."]
 
