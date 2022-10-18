@@ -10,7 +10,7 @@ var direction : Vector2 = Vector2()
 var movespeed : int = 20
 var isDead : bool = false
 
-# animation vars
+# AI vars
 const PLAYER_IDLE_DISTANCE = 120
 const PLAYER_SHOOT_DISTANCE = 200
 
