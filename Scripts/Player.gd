@@ -84,3 +84,6 @@ func shoot():
 		var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
 		emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
 		attack_cooldown.start()
+
+func take_bullet_damage():
+	pass

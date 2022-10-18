@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "EnemyBullet",
+"language": "GDScript",
+"path": "res://Scripts/EnemyBullet.gd"
+}, {
+"base": "Area2D",
 "class": "PlayerBullet",
 "language": "GDScript",
 "path": "res://Scripts/PlayerBullet.gd"
 } ]
 _global_script_class_icons={
+"EnemyBullet": "",
 "PlayerBullet": ""
 }
 

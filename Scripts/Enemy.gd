@@ -26,7 +26,7 @@ func _physics_process(_delta):
 	# Read input every frame
 	handle_movement_ai()
 	handle_animation()
-#	shoot()
+	#shoot()
 	
 func handle_movement_ai():
 	var player_pos = get_tree().current_scene.get_node("Player").position
@@ -65,11 +65,10 @@ func die():
 	z_index -= 1
 	isDead = true
 	
-#func shoot():
-#	var bullet_instance = Bullet.instance()
-#	var target = get_global_mouse_position()
-#	# Bullet fires in the direction of the mouse
-#	# TODO: Set up to connect to a reticule connected to the mouse to get angle for bullet
-#	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
-#	emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+func shoot():
+	var bullet_instance = Bullet.instance()
+	var target = get_global_mouse_position()
+	# Bullet fires in the direction of the mouse
+	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+	emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
 	
