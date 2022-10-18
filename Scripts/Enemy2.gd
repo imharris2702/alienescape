@@ -11,7 +11,7 @@ var isDead : bool = false
 # animation vars
 const player_proximity_distance = 120
 
-onready var animation_tree = $AnimationTree # get the AnimationTree node
+onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
 
 func _ready():
@@ -64,7 +64,7 @@ func handle_animation():
 	if isDead: return
 	if Input.is_physical_key_pressed(16777220):
 		print("death should occur")
-		animation_tree["parameters/playback"].travel("Death")
+		animation_playback.travel("Death")
 		isDead = true
 		return
 	if velocity.x > 0:
@@ -74,16 +74,16 @@ func handle_animation():
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
 		sprite.position.x = abs(sprite.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
-		animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
+		animation_playback.travel("Idle") # set AnimationTree state to "Idle"
 	else:
-		animation_tree["parameters/playback"].travel("Run") # set AnimationTree state to "Run"
+		animation_playback.travel("Run") # set AnimationTree state to "Run"
 	return
 
 func take_bullet_damage():
 	pass
 	
 func die():
-	animation_tree["parameters/playback"].travel("Death")
+	animation_playback.travel("Death")
 	$Collider2D.set_deferred("disabled", true)
 	$HitBoxArea/HitBox.set_deferred("disabled", true)
 	z_index -= 1

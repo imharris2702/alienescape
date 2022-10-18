@@ -10,10 +10,6 @@ var direction := Vector2.ZERO
 # Starts timer on bullet spawn
 func _ready():
 	kill_timer.start()
-	
-func _init():
-	pass
-	#rotation = RandomNumberGenerator.new().randi_range(0, 20) #doesnt work for some reason
 
 # Sets bullet velocity and direction
 func _physics_process(delta):

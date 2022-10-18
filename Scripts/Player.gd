@@ -16,7 +16,7 @@ var isIdle : bool = true
 
 
 onready var end_of_gun = $EndOfGun # get EndOfGun
-onready var animation_tree = $AnimationTree # get the AnimationTree node
+onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
 
 func _ready():
@@ -59,15 +59,14 @@ func handle_animation():
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
 		$EndOfGun.position.x = abs($EndOfGun.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
-
 		if idle_counter % 250 == 0:
-			animation_tree["parameters/playback"].travel("Idle1") # set AnimationTree state to "Idle1"
+			animation_playback.travel("Idle1") # set AnimationTree state to "Idle1"
 		elif isIdle == false:
-			animation_tree["parameters/playback"].travel("Idle") # set AnimationTree state to "Idle"
+			animation_playback.travel("Idle") # set AnimationTree state to "Idle"
 			isIdle = true
 		idle_counter += 1
 	else:
-		animation_tree["parameters/playback"].travel("Run") # set AnimationTree state to "Run"
+		animation_playback.travel("Run") # set AnimationTree state to "Run"
 		isIdle = false
 	return
 
