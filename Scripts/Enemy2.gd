@@ -66,6 +66,7 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
+	return # indestructible enemy for now
 	health -= 1
 	if health == 0:
 		die()
