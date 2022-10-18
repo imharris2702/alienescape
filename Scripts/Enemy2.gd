@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal enemy_fired_bullet(bullet, position, direction)
+
+export (PackedScene) var Bullet # Allows for bullet to be attached
 
 # physics vars
 var velocity : Vector2 = Vector2()
@@ -12,6 +15,7 @@ const player_proximity_distance = 120
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
+onready var end_of_gun = $EndOfGun # get EndOfGun
 onready var attack_cooldown = $AttackCooldown
 
 func _ready():
@@ -20,11 +24,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if isDead: return
-	# Read input every frame
-	if false:
-		read_movement_input()
-	else:
-		handle_movement_ai()
+	handle_movement_ai()
 	handle_animation()
 	
 func handle_movement_ai():
@@ -36,36 +36,11 @@ func handle_movement_ai():
 		return
 	velocity = direction.normalized() * movespeed
 	move_and_slide(velocity)
-
-func read_movement_input():
-	# Handles movement
-	velocity = Vector2()
-	
-	if Input.is_action_pressed("up"):
-		velocity.y -= 1
-		direction = Vector2(0, -1)
-		
-	if Input.is_action_pressed("down"):
-		velocity.y += 1
-		direction = Vector2(0, 1)
-		
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1
-		direction = Vector2(-1, 0)
-		
-	if Input.is_action_pressed("right"):
-		velocity.x += 1
-		direction = Vector2(1, 0)
-		
-	velocity = velocity.normalized()
-	velocity = move_and_slide(velocity * movespeed)
 	
 func handle_animation():
 	if isDead: return
 	if Input.is_physical_key_pressed(16777220):
-		print("death should occur")
-		animation_playback.travel("Death")
-		isDead = true
+		die()
 		return
 	if velocity.x > 0:
 		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
@@ -89,3 +64,14 @@ func die():
 	z_index -= 1
 	isDead = true
 	
+func shoot():
+	if attack_cooldown.is_stopped():
+		animation_playback.travel("Shoot")
+		var bullet_instance = Bullet.instance()
+		bullet_instance.scale.x = .1
+		bullet_instance.scale.y = .1
+		var target = get_tree().current_scene.get_node("Player").position
+		# Bullet fires in the direction of the mouse
+		var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+		emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+		attack_cooldown.start()
