@@ -72,7 +72,7 @@ func handle_animation():
 
 func _unhandled_input(event):
 	# Handles shooting
-	if event.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		shoot()
 
 # Shooting code, should allow to disconnect before gun is picked up

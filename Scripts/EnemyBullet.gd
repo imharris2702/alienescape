@@ -23,6 +23,7 @@ func set_direction(direction: Vector2):
 
 # Removes bullet from memory on timeout (can adjust time)
 func _on_KillTimer_timeout():
+	print("freed enemy bullet") # never gets called, why?
 	queue_free()
 
 

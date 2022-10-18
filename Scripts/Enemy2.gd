@@ -12,6 +12,7 @@ const player_proximity_distance = 120
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
+onready var attack_cooldown = $AttackCooldown
 
 func _ready():
 	return

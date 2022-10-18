@@ -156,4 +156,8 @@ position = Vector2( 1, 0 )
 scale = Vector2( 1.07932, 0.98141 )
 shape = SubResource( 1 )
 
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]
