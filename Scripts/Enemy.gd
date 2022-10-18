@@ -10,6 +10,9 @@ var direction : Vector2 = Vector2()
 var movespeed : int = 20
 var isDead : bool = false
 
+# health var
+var health : int = 1
+
 # AI vars
 const PLAYER_IDLE_DISTANCE = 120
 const PLAYER_SHOOT_DISTANCE = 120
@@ -62,8 +65,10 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
-	die()
-	
+	health -= 1
+	if health == 0:
+		die()
+
 func die():
 	animation_playback.travel("Death")
 	$Collider2D.set_deferred("disabled", true)
