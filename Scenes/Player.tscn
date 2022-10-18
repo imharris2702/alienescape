@@ -170,3 +170,7 @@ shape = SubResource( 3 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
 position = Vector2( 7, -5 )
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

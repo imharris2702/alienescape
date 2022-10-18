@@ -18,6 +18,7 @@ var isIdle : bool = true
 onready var end_of_gun = $EndOfGun # get EndOfGun
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
+onready var attack_cooldown = $AttackCooldown
 
 func _ready():
 	return
@@ -77,8 +78,10 @@ func _unhandled_input(event):
 
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
-	var bullet_instance = Bullet.instance()
-	var target = get_global_mouse_position()
-	# Bullet fires in the direction of the mouse
-	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
-	emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+	if attack_cooldown.is_stopped():
+		var bullet_instance = Bullet.instance()
+		var target = get_global_mouse_position()
+		# Bullet fires in the direction of the mouse
+		var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
+		emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+		attack_cooldown.start()
