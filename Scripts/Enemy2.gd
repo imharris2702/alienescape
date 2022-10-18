@@ -5,7 +5,6 @@ extends KinematicBody2D
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 8
-var bullet_speed : int = 2000
 var isDead : bool = false
 
 # animation vars

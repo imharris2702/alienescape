@@ -8,7 +8,6 @@ export (PackedScene) var Bullet # Allows for bullet to be attached
 var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 150
-var bullet_speed : int = 2000
 
 # animation vars
 var idle_counter = 20
