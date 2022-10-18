@@ -162,7 +162,10 @@ shape = SubResource( 1 )
 wait_time = 0.1
 one_shot = true
 
-[node name="EndOfGun" type="Position2D" parent="."]
+[node name="EndOfGunL" type="Position2D" parent="."]
 position = Vector2( -26, -4 )
+
+[node name="EndOfGunR" type="Position2D" parent="."]
+position = Vector2( 17, -4 )
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]

@@ -34,26 +34,8 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 118, 88 )
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 88, 188 )
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 212, 278 )
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 132, 310 )
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 357, 199 )
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 378, 114 )
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 397, 130 )
-
-[node name="Enemy9" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 319, 273 )
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 388, 143 )
 
 [node name="Alienship" type="Sprite" parent="."]
 position = Vector2( -88, 7 )

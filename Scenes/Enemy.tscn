@@ -178,10 +178,13 @@ position = Vector2( 0, -1 )
 scale = Vector2( 1, 0.960001 )
 shape = SubResource( 1 )
 
-[node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( -14, -8 )
-
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="EndOfGunL" type="Position2D" parent="."]
+position = Vector2( -14, -8 )
+
+[node name="EndOfGunR" type="Position2D" parent="."]
+position = Vector2( 14, -8 )
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]

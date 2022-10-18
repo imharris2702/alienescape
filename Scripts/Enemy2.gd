@@ -12,11 +12,12 @@ var isDead : bool = false
 
 # AI vars
 const PLAYER_IDLE_DISTANCE = 120
-const PLAYER_SHOOT_DISTANCE = 200
+const PLAYER_SHOOT_DISTANCE = 120
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
-onready var end_of_gun = $EndOfGun # get EndOfGun
+onready var end_of_gun_left = $EndOfGunL # get EndOfGunL
+onready var end_of_gun_right = $EndOfGunR # get EndOfGunR
 onready var attack_cooldown = $AttackCooldown
 
 func _ready():
@@ -50,10 +51,10 @@ func handle_animation():
 		die()
 		return
 	if velocity.x > 0:
-		sprite.scale.x = abs(sprite.scale.x) # keep scale positive if moving right
+		sprite.flip_h = true # flips sprite to right
 		sprite.position.x = abs(sprite.position.x)
 	elif velocity.x < 0:
-		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
+		sprite.flip_h = false # Keeps sprite looking left
 		sprite.position.x = abs(sprite.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
 		animation_playback.travel("Idle") # set AnimationTree state to "Idle"
@@ -79,6 +80,12 @@ func shoot():
 	var bullet_instance = Bullet.instance()
 	var target = get_tree().current_scene.get_node("Player").position
 	# Bullet fires in the direction of the mouse
-	var direction_to_mouse = end_of_gun.global_position.direction_to(target).normalized()
-	emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun.global_position, direction_to_mouse)
+	if target.x > self.position.x:
+		sprite.flip_h = true
+		var direction_to_mouse = end_of_gun_right.global_position.direction_to(target).normalized()
+		emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun_right.global_position, direction_to_mouse)
+	else:
+		sprite.flip_h = false
+		var direction_to_mouse = end_of_gun_left.global_position.direction_to(target).normalized()
+		emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun_left.global_position, direction_to_mouse)
 	attack_cooldown.start()
