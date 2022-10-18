@@ -170,7 +170,7 @@ position = Vector2( 0, 13 )
 scale = Vector2( 0.483436, -0.29773 )
 shape = SubResource( 16 )
 
-[node name="HitBoxArea" type="Area2D" parent="."]
+[node name="HitBoxArea" type="Area2D" parent="." groups=["enemy"]]
 script = ExtResource( 3 )
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]

@@ -27,15 +27,13 @@ onready var attack_cooldown = $AttackCooldown
 func _ready():
 	return
 	
-func _process(delta: float) -> void:
-	if isDead: return
-	if can_shoot():
-		shoot()
 
 func _physics_process(_delta):
 	if isDead: return
 	handle_movement_ai()
 	handle_animation()
+	if can_shoot():
+		shoot()
 	
 func distance_to_player():
 	var player_pos = get_tree().current_scene.get_node("Player").position

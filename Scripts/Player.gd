@@ -9,6 +9,9 @@ var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 150
 
+# health var
+var health : int = 10
+
 # animation vars
 var idle_counter = 20
 var isIdle : bool = true
@@ -86,4 +89,10 @@ func shoot():
 		attack_cooldown.start()
 
 func take_bullet_damage():
-	pass
+	health -= 1
+	print(health)
+	if health == 0:
+		die()
+		
+func die():
+	print("Player has died")

@@ -28,7 +28,7 @@ func _on_KillTimer_timeout():
 
 
 func _on_Bullet_area_entered(area):
-	if area.is_in_group("player"):
+	if area.is_in_group("player") and !area.is_in_group("bullet"):
 		$Collider.set_deferred("disabled", true)
 		direction *= .03 # keep momentum slightly
 		queue_free()
