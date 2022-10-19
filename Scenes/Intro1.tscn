@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/alienship.png" type="Texture" id=1]
 [ext_resource path="res://assets/space_background.png" type="Texture" id=2]
 [ext_resource path="res://Assets/earth.png" type="Texture" id=3]
 [ext_resource path="res://Assets/GIL_____.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/IntroTransition1.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlyIn"
@@ -187,6 +188,7 @@ font_data = ExtResource( 4 )
 [node name="Node2D" type="Node2D"]
 scale = Vector2( 2.86969, 2.86969 )
 z_index = 1
+script = ExtResource( 5 )
 
 [node name="Alienship" type="Sprite" parent="."]
 position = Vector2( 23.3475, -10.1056 )
@@ -267,3 +269,5 @@ margin_right = 127.867
 margin_bottom = -64.8894
 custom_fonts/normal_font = SubResource( 3 )
 text = "[ Text Box ]"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

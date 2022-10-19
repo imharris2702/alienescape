@@ -24,9 +24,10 @@ onready var end_of_gun = $EndOfGun # get EndOfGun
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
 onready var attack_cooldown = $AttackCooldown
+onready var blaster_sprite = get_node("Sprite/BlasterSprite")
 
 func _ready():
-	return
+	blaster_sprite.visible = false
 	
 
 func _physics_process(delta):
@@ -65,14 +66,14 @@ func handle_animation():
 		sprite.scale.x = abs(sprite.scale.x) * -1 # make scale negative if moving left
 		$EndOfGun.position.x = abs($EndOfGun.position.x) * -1
 	if velocity.x == 0 and velocity.y == 0:
-		if idle_counter % 250 == 0:
+		if idle_counter % 250 == 0 and !has_blaster:
 			animation_playback.travel("Idle1") # set AnimationTree state to "Idle1"
 		elif isIdle == false:
-			animation_playback.travel("Idle") # set AnimationTree state to "Idle"
+			animation_playback.travel("IdleWGun") if has_blaster else animation_playback.travel("Idle")# set AnimationTree state to "Idle"
 			isIdle = true
 		idle_counter += 1
 	else:
-		animation_playback.travel("Run") # set AnimationTree state to "Run"
+		animation_playback.travel("RunWGun") if has_blaster else animation_playback.travel("Run") # set AnimationTree state to "Run"
 		isIdle = false
 	return
 
@@ -101,3 +102,4 @@ func die():
 
 func pickup_blaster():
 	has_blaster = true
+	blaster_sprite.visible = true
