@@ -65,7 +65,6 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
-	return # indestructible enemy for now
 	health -= 1
 	if health == 0:
 		die()
@@ -76,7 +75,7 @@ func die():
 	$HitBoxArea/HitBox.set_deferred("disabled", true)
 	z_index -= 1
 	isDead = true
-	
+
 func can_shoot():
 	return attack_cooldown.is_stopped() and distance_to_player() < PLAYER_SHOOT_DISTANCE
 	
