@@ -11,7 +11,7 @@ var movespeed : int = 8
 var isDead : bool = false
 
 # health variable
-var health : int = 3
+var health : int = 99
 
 # AI vars
 const PLAYER_IDLE_DISTANCE = 120

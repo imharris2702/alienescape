@@ -7,9 +7,9 @@
 [ext_resource path="res://Scenes/BulletManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/TestObstacle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/alienship.png" type="Texture" id=7]
-[ext_resource path="res://assets/WASD.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Wasd.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/tank.png" type="Texture" id=9]
-[ext_resource path="res://assets/mouseClick.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/MouseClick.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/BlasterPickup.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Node2D"]
@@ -33,7 +33,7 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 118, 88 )
+position = Vector2( 287, 86 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 388, 143 )
@@ -48,15 +48,12 @@ position = Vector2( -179, 116.5 )
 scale = Vector2( 1.9375, 1.9375 )
 texture = ExtResource( 9 )
 
-[node name="Wasd" type="Sprite" parent="."]
-position = Vector2( -213, 203 )
-texture = ExtResource( 8 )
+[node name="Wasd" parent="." instance=ExtResource( 8 )]
+position = Vector2( 134, 42 )
 
-[node name="MouseClick" type="Sprite" parent="."]
-position = Vector2( -142, 193 )
-scale = Vector2( 1.65625, 1.65625 )
-texture = ExtResource( 10 )
+[node name="MouseClick" parent="." instance=ExtResource( 10 )]
+position = Vector2( 187, 36 )
 
-[node name="Sprite" parent="." instance=ExtResource( 11 )]
+[node name="GunOnGround" parent="." instance=ExtResource( 11 )]
 position = Vector2( 49, 64 )
 scale = Vector2( 0.484375, 0.484375 )
