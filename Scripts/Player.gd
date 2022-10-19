@@ -12,6 +12,9 @@ var movespeed : int = 150
 # health var
 var health : int = 10
 
+# variable for if player has gotten pickup
+var has_blaster : bool = true
+
 # animation vars
 var idle_counter = 20
 var isIdle : bool = true
@@ -80,7 +83,7 @@ func _unhandled_input(event):
 
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
-	if attack_cooldown.is_stopped():
+	if attack_cooldown.is_stopped() and has_blaster:
 		var bullet_instance = Bullet.instance()
 		var target = get_global_mouse_position()
 		# Bullet fires in the direction of the mouse
@@ -92,6 +95,9 @@ func take_bullet_damage():
 	health -= 1
 	if health == 0:
 		die()
-		
+
 func die():
 	print("Player has died")
+
+func pickup_blaster():
+	has_blaster = true
