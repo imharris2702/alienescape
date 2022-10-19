@@ -1,0 +1,22 @@
+Game Story Outline
+
+[Intro]
+(scene 1)
+* UFO flying through space towards earth - Area 51 *
+
+(scene 2)
+* from view of UFO looking at Area 51 *
+alien 1: "Area 51 confirmed, initiate Xorb Injection"
+alien 2: "Roger, Xorb injection commencing"
+...
+alien 2: "Confirmed: Area 51's systems are down"
+
+(scene 3)
+* at Blarg the alien's cell *
+* force field prison deactivates *
+Blarg: Holy Zoobers! I'm free!
+Blarg: "This is my chance to escape.."
+
+
+[Main]
+* Blarg proceeds to find a gun (tutorial section) *
