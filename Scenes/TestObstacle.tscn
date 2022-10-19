@@ -47,7 +47,6 @@ b = Vector2( 320, -176.211 )
 scale = Vector2( 0.6875, 0.709375 )
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2( 1, 1 )
 tile_set = SubResource( 5 )
 format = 1
 

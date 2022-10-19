@@ -181,7 +181,7 @@ states/RunWGun/node = SubResource( 15 )
 states/RunWGun/position = Vector2( 731.877, 376 )
 transitions = [ "Idle", "Idle1", SubResource( 12 ), "Idle1", "Idle", SubResource( 13 ), "Idle", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Idle", "RunWGun", SubResource( 18 ), "RunWGun", "Idle", SubResource( 19 ), "Idle1", "Run", SubResource( 20 ), "RunWGun", "IdleWGun", SubResource( 25 ), "IdleWGun", "Idle", SubResource( 27 ), "Idle", "IdleWGun", SubResource( 28 ), "IdleWGun", "RunWGun", SubResource( 29 ), "Idle1", "RunWGun", SubResource( 30 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -276.123, -57 )
+graph_offset = Vector2( -16.123, 135 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 

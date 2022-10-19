@@ -32,10 +32,11 @@ func _ready():
 
 func _physics_process(delta):
 	# Read input every frame
-	read_movement_input()
+	read_input()
 	handle_animation()
+	
 
-func read_movement_input():
+func read_input():
 	# Handles movement
 	velocity = Vector2()
 	
@@ -57,6 +58,9 @@ func read_movement_input():
 		
 	velocity = velocity.normalized()
 	velocity = move_and_slide(velocity * movespeed)
+
+	if Input.is_action_pressed("shoot"):
+		shoot()
 	
 func handle_animation():
 	if velocity.x > 0:
@@ -78,12 +82,13 @@ func handle_animation():
 	return
 
 func _unhandled_input(event):
+	pass
 	# Handles shooting
-	if Input.is_action_pressed("shoot"):
-		shoot()
 
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
+	print("player shoots")
+	print(attack_cooldown.is_stopped() and has_blaster)
 	if attack_cooldown.is_stopped() and has_blaster:
 		var bullet_instance = Bullet.instance()
 		var target = get_global_mouse_position()
