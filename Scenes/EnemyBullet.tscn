@@ -9,7 +9,7 @@ extents = Vector2( 4, 4 )
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.05709, 0.542733 )
 shape = SubResource( 1 )
 
@@ -21,3 +21,7 @@ region_rect = Rect2( 42, 11, 10, 10 )
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
+[connection signal="child_entered_tree" from="Collider" to="." method="_on_Collider_child_entered_tree"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]

@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/fbi0-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy2.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/EnemyBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/EnemyHitBoxArea.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Idle"
@@ -110,14 +111,6 @@ graph_offset = Vector2( 120, -3 )
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 20.8354, 10 )
 
-[sub_resource type="GDScript" id=21]
-script/source = "extends Area2D
-
-func _on_HitBoxArea_area_entered(area):
-	if area.is_in_group(\"player_bullet\"):
-		get_parent().take_bullet_damage()
-"
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 21.5417 )
 
@@ -151,7 +144,7 @@ scale = Vector2( 0.78937, -0.410726 )
 shape = SubResource( 16 )
 
 [node name="HitBoxArea" type="Area2D" parent="." groups=["enemy"]]
-script = SubResource( 21 )
+script = ExtResource( 4 )
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
 position = Vector2( 1, 0 )

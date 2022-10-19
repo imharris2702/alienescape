@@ -21,14 +21,12 @@ func set_direction(direction: Vector2):
 	self.direction = direction
 	self.rotation = direction.angle()
 
-# Removes bullet from memory on timeout (can adjust time)
-func _on_KillTimer_timeout():
-	print("freed enemy bullet") # never gets called, why?
-	queue_free()
-
-
 func _on_Bullet_area_entered(area):
 	if area.is_in_group("player") and !area.is_in_group("bullet"):
 		$Collider.set_deferred("disabled", true)
 		direction *= .03 # keep momentum slightly
 		queue_free()
+
+# Removes bullet from memory on timeout (can adjust time)
+func _on_KillTimer_timeout():
+	queue_free()

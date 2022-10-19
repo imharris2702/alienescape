@@ -90,7 +90,6 @@ func shoot():
 
 func take_bullet_damage():
 	health -= 1
-	print(health)
 	if health == 0:
 		die()
 		
