@@ -205,49 +205,40 @@ texture = ExtResource( 3 )
 [node name="Space" type="Node2D" parent="."]
 position = Vector2( -4.18164, 0 )
 rotation = 0.000157444
-scale = Vector2( 1, 1 )
 z_index = -2
 
 [node name="SpaceBackground" type="Sprite" parent="Space"]
 position = Vector2( 64, -64 )
 rotation = 1.57079
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground2" type="Sprite" parent="Space"]
 position = Vector2( -64, -64 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground3" type="Sprite" parent="Space"]
 position = Vector2( -64, 64 )
 rotation = -1.57079
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground4" type="Sprite" parent="Space"]
 position = Vector2( 64, 64 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground5" type="Sprite" parent="Space"]
 position = Vector2( 191.668, 62.3459 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground6" type="Sprite" parent="Space"]
 position = Vector2( 191.648, -63.8001 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground7" type="Sprite" parent="Space"]
 position = Vector2( -192.007, -64.1184 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="SpaceBackground8" type="Sprite" parent="Space"]
 position = Vector2( -192.007, 63.7699 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/reticule.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=31]
+script/source = "extends Sprite
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func _process(delta: float) -> void:
+	global_position = get_global_mouse_position()
+"
+
+[node name="Reticule" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -0.5 )
+script = SubResource( 31 )
