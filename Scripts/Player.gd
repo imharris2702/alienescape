@@ -87,8 +87,6 @@ func _unhandled_input(event):
 
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
-	print("player shoots")
-	print(attack_cooldown.is_stopped() and has_blaster)
 	if attack_cooldown.is_stopped() and has_blaster:
 		var bullet_instance = Bullet.instance()
 		var target = get_global_mouse_position()

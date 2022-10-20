@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/JailBars-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/wall.png" type="Texture" id=2]
+[ext_resource path="res://Assets/starting_area.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/StartingArea.gd" type="Script" id=4]
+[ext_resource path="res://Assets/starting_area_backwall.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Wasd.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "On"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cell/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cell/Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cell/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+
+[sub_resource type="SegmentShape2D" id=5]
+a = Vector2( -2.55193, -16.5876 )
+b = Vector2( -2.55193, 49.7627 )
+
+[sub_resource type="SegmentShape2D" id=6]
+b = Vector2( 133.977, -1.27596 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 0, 12 )
+b = Vector2( 547, 11 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( -84, 136 )
+b = Vector2( -86, -21 )
+
+[node name="Node2D" type="StaticBody2D"]
+script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "On"
+anims/On = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Cell" type="Node2D" parent="."]
+position = Vector2( -7, -9 )
+scale = Vector2( 0.783719, 0.783719 )
+
+[node name="Wall" type="Sprite" parent="Cell"]
+position = Vector2( 66, -21 )
+scale = Vector2( 1.74457, 2.95373 )
+texture = ExtResource( 2 )
+
+[node name="Wall2" type="Sprite" parent="Cell"]
+position = Vector2( -68, -22 )
+scale = Vector2( 1.74457, 2.95373 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Cell"]
+position = Vector2( -32, -2 )
+scale = Vector2( 1, 1.6931 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
+
+[node name="Sprite2" type="Sprite" parent="Cell"]
+position = Vector2( 32, -2 )
+scale = Vector2( 1, 1.6931 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cell"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cell/StaticBody2D"]
+position = Vector2( -65.0743, -9.53674e-07 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cell/StaticBody2D"]
+position = Vector2( 68.9022, 1.27597 )
+shape = SubResource( 5 )
+
+[node name="Lasers" type="CollisionShape2D" parent="Cell/StaticBody2D"]
+position = Vector2( -67.6263, 47.2108 )
+shape = SubResource( 6 )
+
+[node name="Room" type="Node2D" parent="."]
+
+[node name="hallway" type="Sprite" parent="Room"]
+position = Vector2( 189, 21 )
+scale = Vector2( 2.13967, 2.13967 )
+z_index = -2
+texture = ExtResource( 3 )
+
+[node name="Backwall" type="Sprite" parent="Room"]
+position = Vector2( 189, 21 )
+scale = Vector2( 2.13967, 2.13967 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2( -84, 126 )
+z_index = 2
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -84, -34 )
+z_index = 2
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+z_index = 2
+shape = SubResource( 4 )
+
+[node name="Wasd" parent="." instance=ExtResource( 6 )]
+position = Vector2( -126, -58 )
