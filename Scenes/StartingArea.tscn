@@ -3,9 +3,9 @@
 [ext_resource path="res://Assets/JailBars-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Assets/wall.png" type="Texture" id=2]
 [ext_resource path="res://Assets/starting_area.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/StartingArea.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/StartingArea.gd" type="Script" id=4]
 [ext_resource path="res://Assets/starting_area_backwall.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Wasd.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Misc/Wasd.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "On"
@@ -114,6 +114,7 @@ shape = SubResource( 5 )
 [node name="Lasers" type="CollisionShape2D" parent="Cell/StaticBody2D"]
 position = Vector2( -67.6263, 47.2108 )
 shape = SubResource( 6 )
+disabled = true
 
 [node name="Room" type="Node2D" parent="."]
 

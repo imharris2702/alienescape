@@ -2,14 +2,14 @@
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/tank.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/TestObstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Misc/TestObstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/BlasterPickup.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Wasd.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/MouseClick.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/BulletManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Misc/BlasterPickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Misc/Wasd.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Misc/MouseClick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Misc/BulletManager.tscn" type="PackedScene" id=10]
 
 [node name="TestArea" type="Node2D"]
 position = Vector2( 1, -1 )
