@@ -33,22 +33,27 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 40
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
 custom_constants/margin_bottom = 40
 
 [node name="Rows" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 40.0
-margin_top = 40.0
+margin_left = 25.0
+margin_top = 25.0
 margin_right = 920.0
 margin_bottom = 500.0
 
 [node name="TopRow" type="HBoxContainer" parent="MarginContainer/Rows"]
-margin_right = 880.0
-margin_bottom = 75.0
+margin_right = 895.0
+margin_bottom = 77.0
 size_flags_vertical = 3
 
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Rows/TopRow"]
+[node name="HealthSection" type="CenterContainer" parent="MarginContainer/Rows/TopRow"]
+margin_right = 200.0
+margin_bottom = 30.0
+size_flags_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Rows/TopRow/HealthSection"]
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
@@ -57,15 +62,17 @@ custom_styles/bg = SubResource( 2 )
 value = 100.0
 percent_visible = false
 
+[node name="HealthTween" type="Tween" parent="MarginContainer/Rows/TopRow/HealthSection"]
+
 [node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/Rows"]
-margin_top = 79.0
-margin_right = 880.0
-margin_bottom = 380.0
+margin_top = 81.0
+margin_right = 895.0
+margin_bottom = 393.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
-margin_top = 384.0
-margin_right = 880.0
-margin_bottom = 460.0
+margin_top = 397.0
+margin_right = 895.0
+margin_bottom = 475.0
 size_flags_vertical = 3
