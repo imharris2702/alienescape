@@ -9,8 +9,6 @@ var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 150
 
-# health var
-var health : int = 10
 
 # variable for if player has gotten pickup
 var has_blaster : bool = true
@@ -25,6 +23,7 @@ onready var animation_playback = $AnimationTree["parameters/playback"] # get the
 onready var sprite = $Sprite # get the Sprite node
 onready var attack_cooldown = $AttackCooldown
 onready var blaster_sprite = get_node("Sprite/BlasterSprite")
+onready var health = $Health # Get health node
 
 func _ready():
 	blaster_sprite.visible = false
@@ -97,8 +96,8 @@ func shoot():
 		$ShootSound.play()
 
 func take_bullet_damage():
-	health -= 1
-	if health == 0:
+	health.health -= 10
+	if health.health == 0:
 		die()
 
 func die():

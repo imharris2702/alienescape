@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/alien3-Sheet.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/on-ground-blaster.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Misc/Reticule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sounds/laserShoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Misc/Health.tscn" type="PackedScene" id=8]
 
 [sub_resource type="GDScript" id=22]
 script/source = "extends Sprite
@@ -247,5 +248,7 @@ one_shot = true
 stream = ExtResource( 7 )
 volume_db = -25.0
 attenuation = 2.63902
+
+[node name="Health" parent="." instance=ExtResource( 8 )]
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]

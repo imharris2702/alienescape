@@ -10,9 +10,6 @@ var direction : Vector2 = Vector2()
 var movespeed : int = 20
 var isDead : bool = false
 
-# health var
-var health : int = 1
-
 # AI vars
 const PLAYER_IDLE_DISTANCE = 120
 const PLAYER_SHOOT_DISTANCE = 120
@@ -21,8 +18,8 @@ onready var animation_playback = $AnimationTree["parameters/playback"] # get the
 onready var sprite = $Sprite # get the Sprite node
 onready var end_of_gun_left = $EndOfGunL # get EndOfGunL
 onready var end_of_gun_right = $EndOfGunR # get EndOfGunR
-
 onready var attack_cooldown = $AttackCooldown
+onready var health = $Health
 
 func _ready():
 	return
@@ -63,8 +60,8 @@ func handle_animation():
 	return
 
 func take_bullet_damage():
-	health -= 1
-	if health == 0:
+	health.health -= 1
+	if health.health == 0:
 		die()
 
 func die():
