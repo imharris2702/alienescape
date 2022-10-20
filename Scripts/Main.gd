@@ -10,6 +10,9 @@ func _ready():
 	# Code for bullet managers needs to be copied every level
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	
+	# Connects gui to player
+	gui.set_player(player)
+	
 	for enemy in enemies.get_children():
 		enemy.connect("enemy_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	

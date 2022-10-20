@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal player_fired_bullet(bullet, position, direction)
+signal player_health_changed(new_health)
 
 export (PackedScene) var Bullet # Allows for bullet to be attached
 
@@ -97,6 +98,7 @@ func shoot():
 
 func take_bullet_damage():
 	health.health -= 10
+	emit_signal("player_health_changed", health.health)
 	if health.health == 0:
 		die()
 
