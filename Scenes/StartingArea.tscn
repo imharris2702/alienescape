@@ -66,7 +66,7 @@ b = Vector2( 547, 11 )
 a = Vector2( -84, 136 )
 b = Vector2( -86, -21 )
 
-[node name="Node2D" type="StaticBody2D"]
+[node name="StartingArea" type="StaticBody2D"]
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
