@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/BlasterPickup.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Misc/BlasterPickup.gd" type="Script" id=1]
 [ext_resource path="res://assets/on-ground-blaster.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
