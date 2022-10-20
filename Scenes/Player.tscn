@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/alien3-Sheet.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/PlayerHitBoxArea.gd" type="Script" id=4]
 [ext_resource path="res://Assets/on-ground-blaster.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Misc/Reticule.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/laserShoot.wav" type="AudioStream" id=7]
 
 [sub_resource type="GDScript" id=22]
 script/source = "extends Sprite
@@ -237,9 +238,14 @@ shape = SubResource( 3 )
 position = Vector2( 8, -5 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.3
 one_shot = true
 
 [node name="Reticule" parent="." instance=ExtResource( 6 )]
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -25.0
+attenuation = 2.63902
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]
