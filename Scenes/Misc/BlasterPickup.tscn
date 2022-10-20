@@ -9,6 +9,8 @@ extents = Vector2( 13, 10 )
 [node name="Sprite" type="Sprite"]
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
+hover_speed = 5.0
+hover_height = 2.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["blaster"]]
 

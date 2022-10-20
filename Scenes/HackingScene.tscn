@@ -1,0 +1,132 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/SpaceshipScene_Area51.png" type="Texture" id=1]
+[ext_resource path="res://Assets/AlienShipScene_Cabin.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Hover.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/HackingScene.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "ButtonPress"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Hacking"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "ButtonPress"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Hacking"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachine" id=1]
+states/ButtonPress/node = SubResource( 7 )
+states/ButtonPress/position = Vector2( 559, 78 )
+states/Hacking/node = SubResource( 8 )
+states/Hacking/position = Vector2( 743, 78 )
+states/Idle/node = SubResource( 9 )
+states/Idle/position = Vector2( 380, 74 )
+transitions = [ "Idle", "ButtonPress", SubResource( 10 ), "ButtonPress", "Hacking", SubResource( 11 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="HackingScene" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.95, 0.95 )
+
+[node name="Outside" type="Sprite" parent="."]
+scale = Vector2( 4.25037, 4.25037 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+hover_speed = 1.0
+hover_height = 1.0
+
+[node name="Cabin" type="Sprite" parent="."]
+scale = Vector2( 4.25838, 4.25838 )
+texture = ExtResource( 2 )
+hframes = 8
+frame = 1
+script = ExtResource( 3 )
+hover_speed = 3.0
+hover_height = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cabin")
+anims/ButtonPress = SubResource( 5 )
+anims/Hacking = SubResource( 6 )
+anims/Idle = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 2 )

@@ -10,4 +10,8 @@ func _ready() -> void:
 #	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	get_tree().change_scene("res://Scenes/Main.tscn")
+	get_tree().change_scene("res://Scenes/HackingScene.tscn")
+	
+	
+func _input(event: InputEvent) -> void:
+	event.is_action_pressed("skip")
