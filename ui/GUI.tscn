@@ -1,25 +1,68 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0431373, 0.745098, 0.0117647, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.517647, 0.027451, 0.027451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="GUI" type="CanvasLayer"]
 
-[node name="Rows" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
 
-[node name="TopRow" type="HBoxContainer" parent="Rows"]
-margin_right = 960.0
-margin_bottom = 88.0
+[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 920.0
+margin_bottom = 500.0
+
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_right = 880.0
+margin_bottom = 75.0
 size_flags_vertical = 3
 
-[node name="MiddleRow" type="HBoxContainer" parent="Rows"]
-margin_top = 92.0
-margin_right = 960.0
-margin_bottom = 447.0
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Rows/TopRow"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+
+[node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_top = 79.0
+margin_right = 880.0
+margin_bottom = 380.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="BottomRow" type="HBoxContainer" parent="Rows"]
-margin_top = 451.0
-margin_right = 960.0
-margin_bottom = 540.0
+[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_top = 384.0
+margin_right = 880.0
+margin_bottom = 460.0
 size_flags_vertical = 3
