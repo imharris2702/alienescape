@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/retro-texture-pack.png-03ee42eef3565c3df1923f81f836d94e.stex"
+path="res://.import/retro-texture-pack.png-e309e53f3a05b8896f22e71c07ade189.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/retro-texture-pack.png"
-dest_files=[ "res://.import/retro-texture-pack.png-03ee42eef3565c3df1923f81f836d94e.stex" ]
+source_file="res://assets/retro-texture-pack.png"
+dest_files=[ "res://.import/retro-texture-pack.png-e309e53f3a05b8896f22e71c07ade189.stex" ]
 
 [params]
 
