@@ -6,13 +6,8 @@ export (PackedScene) var Bullet # Allows for bullet to be attached
 
 # physics vars
 var velocity : Vector2 = Vector2()
-var direction : Vector2 = Vector2()
 var movespeed : int = 8
 var isDead : bool = false
-
-# AI vars
-const PLAYER_IDLE_DISTANCE = 120
-const PLAYER_SHOOT_DISTANCE = 120
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 onready var sprite = $Sprite # get the Sprite node
