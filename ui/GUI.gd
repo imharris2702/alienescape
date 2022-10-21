@@ -2,13 +2,12 @@ extends CanvasLayer
 
 onready var health_bar = $MarginContainer/Rows/TopRow/HealthSection/HealthBar
 onready var health_tween = $MarginContainer/Rows/TopRow/HealthSection/HealthTween
-var original_color = Color("#0bbe03")
-var highlight_color = Color("#a2d79e")
-
 onready var death_vignette = $DeathVignette.material
 onready var death_tween = $DeathVignette/DeathTween
-var vignette_color = Color('#961919')
 
+var original_color = Color("#0bbe03")
+var highlight_color = Color("#a2d79e")
+var vignette_color = Color('#961919')
 var player
 
 func set_player(player):
@@ -27,7 +26,7 @@ func set_new_health_value(new_health: int):
 #		print('death tween start')
 #		death_tween.targeting_method()
 		
-func _process(delta: float) -> void:
+func _physics_process(delta):
 	if player.isDead and death_vignette.get_shader_param("multiplier") > -.3:
 		death_vignette.set_shader_param("multiplier", death_vignette.get_shader_param("multiplier") - .01)
 		death_vignette.set_shader_param("softness", death_vignette.get_shader_param("softness") - .001)
