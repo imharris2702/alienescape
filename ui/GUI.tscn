@@ -50,13 +50,13 @@ size_flags_vertical = 3
 
 [node name="HealthSection" type="CenterContainer" parent="MarginContainer/Rows/TopRow"]
 margin_right = 200.0
-margin_bottom = 30.0
+margin_bottom = 10.0
 size_flags_vertical = 0
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/Rows/TopRow/HealthSection"]
 margin_right = 200.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 200, 30 )
+margin_bottom = 10.0
+rect_min_size = Vector2( 200, 10 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 100.0
