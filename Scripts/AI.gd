@@ -24,7 +24,7 @@ var origin: Vector2 = Vector2.ZERO
 var patrol_location: Vector2 = Vector2.ZERO
 var patrol_location_reached: bool = true
 
-func _process(delta):
+func _physics_process(delta):
 	if actor.isDead:
 		return
 	match current_state:
