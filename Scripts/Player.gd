@@ -10,9 +10,9 @@ var velocity : Vector2 = Vector2()
 var direction : Vector2 = Vector2()
 var movespeed : int = 150
 
-
-# variable for if player has gotten pickup
+# general
 var has_blaster : bool = true
+var isDead : bool = false
 
 # animation vars
 var idle_counter = 20
@@ -31,6 +31,7 @@ func _ready():
 	
 
 func _physics_process(delta):
+	if isDead: return
 	# Read input every frame
 	read_input()
 	handle_animation()
@@ -105,6 +106,9 @@ func take_bullet_damage():
 func die():
 	print("Player has died")
 	animation_playback.travel("Death")
+	isDead = true
+	blaster_sprite.visible = false
+	
 
 func pickup_blaster():
 	has_blaster = true

@@ -72,7 +72,7 @@ func die():
 	isDead = true
 	
 func can_shoot():
-	return attack_cooldown.is_stopped() and distance_to_player() < PLAYER_SHOOT_DISTANCE
+	return attack_cooldown.is_stopped() and distance_to_player() < PLAYER_SHOOT_DISTANCE and !get_tree().current_scene.get_node("Player").isDead
 
 func shoot():
 	animation_playback.travel("Shoot")

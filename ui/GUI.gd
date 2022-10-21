@@ -8,14 +8,15 @@ var highlight_color = Color("#a2d79e")
 onready var death_vignette = $DeathVignette
 onready var death_tween = $DeathVignette/DeathTween
 var vignette_color = Color('#961919')
+var max_player_health: int
 
 var player
-
 
 func set_player(player):
 	self.player = player
 	set_new_health_value(player.health.health)
 	player.connect("player_health_changed", self, "set_new_health_value")
+	
 
 func set_new_health_value(new_health: int):
 	var bar_style = health_bar.get("custom_styles/fg")
@@ -25,6 +26,7 @@ func set_new_health_value(new_health: int):
 	health_tween.start()
 	if new_health <= 0:
 		pass
+		
 func _process(delta: float) -> void:
 	#death_vignette.get_material().set_shader_param("multiplier", death_vignette.get_material().get_shader_param("multiplier") - .01)
 	pass
