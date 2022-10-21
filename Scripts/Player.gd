@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 signal player_fired_bullet(bullet, position, direction)
 signal player_health_changed(new_health)
