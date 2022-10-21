@@ -30,8 +30,8 @@ corner_radius_bottom_left = 1
 code = "shader_type canvas_item;
 
 uniform vec4 color: hint_color;
-uniform float multiplier = 0.2;
-uniform float softness = .6;
+uniform float multiplier = 0.85;
+uniform float softness = .85;
 
 void fragment()
 {
@@ -42,7 +42,7 @@ void fragment()
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
 shader_param/color = Color( 0.588235, 0.0980392, 0.0980392, 1 )
-shader_param/multiplier = 0.8
+shader_param/multiplier = 0.85
 shader_param/softness = 0.85
 
 [node name="GUI" type="CanvasLayer"]
@@ -102,3 +102,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="DeathTween" type="Tween" parent="DeathVignette"]
+
+[connection signal="tween_step" from="DeathVignette/DeathTween" to="." method="_on_DeathTween_tween_step"]
