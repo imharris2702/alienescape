@@ -104,6 +104,7 @@ func take_bullet_damage():
 
 func die():
 	print("Player has died")
+	animation_playback.travel("Death")
 
 func pickup_blaster():
 	has_blaster = true

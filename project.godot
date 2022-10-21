@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="alienescape"
-run/main_scene="res://Scenes/SpaceScene.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 
 [display]
 

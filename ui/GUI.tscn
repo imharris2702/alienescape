@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/GUI.gd" type="Script" id=1]
 
@@ -25,6 +25,25 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec4 color: hint_color;
+uniform float multiplier = 0.2;
+uniform float softness = .6;
+
+void fragment()
+{
+	float value = distance(UV, vec2(0.5));
+	COLOR = vec4(color.rgb, smoothstep(multiplier, softness, value));
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/color = Color( 0.588235, 0.0980392, 0.0980392, 1 )
+shader_param/multiplier = 0.8
+shader_param/softness = 0.85
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -76,3 +95,10 @@ margin_top = 397.0
 margin_right = 895.0
 margin_bottom = 475.0
 size_flags_vertical = 3
+
+[node name="DeathVignette" type="ColorRect" parent="."]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DeathTween" type="Tween" parent="DeathVignette"]
