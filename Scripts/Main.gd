@@ -18,3 +18,4 @@ func _ready():
 	
 	# FOR OPENING LEVEL ONLY
 	player.has_blaster = false
+	player.set_blaster_sprite(false)

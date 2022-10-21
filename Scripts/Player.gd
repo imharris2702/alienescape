@@ -27,8 +27,9 @@ onready var blaster_sprite = get_node("Sprite/BlasterSprite")
 onready var health = $Health # Get health node
 
 func _ready():
-	blaster_sprite.visible = false
-	
+	#blaster_sprite.visible = has_blaster
+	pass
+
 
 func _physics_process(delta):
 	if isDead: return
@@ -113,3 +114,9 @@ func die():
 func pickup_blaster():
 	has_blaster = true
 	blaster_sprite.visible = true
+
+func set_blaster_sprite(input: bool):
+	if input:
+		blaster_sprite.visible = true
+	else:
+		blaster_sprite.visible = false
