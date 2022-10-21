@@ -20,10 +20,10 @@ onready var end_of_gun_left = $EndOfGunL # get EndOfGunL
 onready var end_of_gun_right = $EndOfGunR # get EndOfGunR
 onready var attack_cooldown = $AttackCooldown
 onready var health = $Health
+onready var ai = $AI
 
 func _ready():
-	return
-	
+	ai.initialize(self)
 
 func _physics_process(_delta):
 	if isDead: return

@@ -225,7 +225,7 @@ graph_offset = Vector2( -39.123, -107 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8.5, 16 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
