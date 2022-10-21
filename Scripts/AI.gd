@@ -4,6 +4,9 @@ signal state_changed(new_state)
 
 onready var player_detection_zone = $PlayerDetectionZone
 
+export (int) var player_idle_distance = 120
+export (int) var player_shoot_distance = 120
+
 enum State {
 	PATROL,
 	ENGAGE
@@ -16,14 +19,23 @@ var actor = null
 func _process(delta):
 	if actor == null:
 		print("Error: no enemy")
+	if actor.isDead:
+		return
 	match current_state:
 		State.PATROL:
+			pass
+		State.ENGAGE:
 			if player != null:
-				pass
+				var direction: Vector2 = player.position - actor.position
+				if direction.length() <= player_idle_distance:
+					actor.velocity = Vector2.ZERO
+				else:
+					actor.velocity = direction.normalized() * actor.movespeed
+					actor.move_and_slide(actor.velocity)
+				if direction.length() < player_shoot_distance and !player.isDead:
+					actor.shoot(player)
 			else:
 				print("In engage state but no player")
-		State.ENGAGE:
-			pass
 		_:
 			print("Error: in state that shouldn't exist")
 

@@ -21,7 +21,7 @@ position = Vector2( 220, 163 )
 z_index = -1
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 237, 124 )
+position = Vector2( 53.964, 113.027 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2( 0.485393, 0.512382 )
@@ -33,7 +33,7 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 287, 86 )
+position = Vector2( 323, 111 )
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 388, 143 )
