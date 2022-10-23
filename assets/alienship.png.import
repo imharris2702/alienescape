@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alienship.png-cb946431c1ee09ca4a59f2a40501015c.stex"
+path="res://.import/alienship.png-319a4f55985c8b3f3e991a8af7663659.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/alienship.png"
-dest_files=[ "res://.import/alienship.png-cb946431c1ee09ca4a59f2a40501015c.stex" ]
+source_file="res://assets/alienship.png"
+dest_files=[ "res://.import/alienship.png-319a4f55985c8b3f3e991a8af7663659.stex" ]
 
 [params]
 

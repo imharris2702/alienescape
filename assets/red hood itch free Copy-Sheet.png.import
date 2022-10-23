@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/red hood itch free Copy-Sheet.png-86d6dbb1b776eb90a911718017fece7d.stex"
+path="res://.import/red hood itch free Copy-Sheet.png-278b628f7b198af7eee87742e9ee0d97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/red hood itch free Copy-Sheet.png"
-dest_files=[ "res://.import/red hood itch free Copy-Sheet.png-86d6dbb1b776eb90a911718017fece7d.stex" ]
+source_file="res://assets/red hood itch free Copy-Sheet.png"
+dest_files=[ "res://.import/red hood itch free Copy-Sheet.png-278b628f7b198af7eee87742e9ee0d97.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AlienShipScene_Cabin.png-0980d64eec4cd5d8620e0b83c6fc70de.stex"
+path="res://.import/AlienShipScene_Cabin.png-07659451e95a681f84e99f870d2cb184.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/AlienShipScene_Cabin.png"
-dest_files=[ "res://.import/AlienShipScene_Cabin.png-0980d64eec4cd5d8620e0b83c6fc70de.stex" ]
+source_file="res://assets/AlienShipScene_Cabin.png"
+dest_files=[ "res://.import/AlienShipScene_Cabin.png-07659451e95a681f84e99f870d2cb184.stex" ]
 
 [params]
 
