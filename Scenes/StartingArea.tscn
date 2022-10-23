@@ -88,14 +88,14 @@ b = Vector2( 133.977, -1.27596 )
 
 [sub_resource type="SegmentShape2D" id=3]
 a = Vector2( 0, 12 )
-b = Vector2( 548, 14 )
+b = Vector2( 547, 11 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 273, 44 )
 
 [sub_resource type="SegmentShape2D" id=4]
 a = Vector2( -84, 136 )
-b = Vector2( -85, -21 )
+b = Vector2( -86, -21 )
 
 [node name="StartingArea" type="StaticBody2D"]
 script = ExtResource( 4 )
@@ -134,7 +134,7 @@ position = Vector2( 32, -2 )
 scale = Vector2( 1, 1.6931 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 3
+frame = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Cell"]
 
@@ -183,5 +183,5 @@ shape = SubResource( 4 )
 position = Vector2( -126, -58 )
 
 [node name="MouseClick" parent="." instance=ExtResource( 7 )]
-position = Vector2( 315, 57 )
+position = Vector2( 175, 4 )
 z_index = -1

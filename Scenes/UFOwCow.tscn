@@ -1,0 +1,208 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/Hover.gd" type="Script" id=1]
+[ext_resource path="res://Assets/alienship.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UFOBeam-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/cow-Sheet.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Falling"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1e-05 ),
+"update": 0,
+"values": [ Vector2( 0, 55 ), Vector2( 0, 109 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 45 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Spinning"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 55 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Falling"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Spinning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/Death/node = SubResource( 5 )
+states/Death/position = Vector2( 852, 95 )
+states/Falling/node = SubResource( 12 )
+states/Falling/position = Vector2( 646, 95 )
+states/Spinning/node = SubResource( 6 )
+states/Spinning/position = Vector2( 437, 95 )
+transitions = [ "Spinning", "Falling", SubResource( 13 ), "Falling", "Death", SubResource( 14 ) ]
+start_node = "Spinning"
+end_node = "Death"
+graph_offset = Vector2( 0, -15 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[node name="UFOwCow" type="Node2D"]
+
+[node name="Alienship" type="Sprite" parent="."]
+scale = Vector2( 2.92125, 2.92125 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+hover_speed = 2.0
+hover_height = 2.0
+
+[node name="UfoBeam-Sheet" type="Sprite" parent="Alienship"]
+position = Vector2( 0, 25.1811 )
+scale = Vector2( 0.449663, 0.449663 )
+z_index = -1
+texture = ExtResource( 3 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Alienship/UfoBeam-Sheet"]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Cow-Sheet" type="Sprite" parent="."]
+position = Vector2( 0, 55 )
+rotation = 4.48709
+scale = Vector2( 1.00453, 1.00897 )
+texture = ExtResource( 4 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cow-Sheet"]
+anims/Death = SubResource( 3 )
+anims/Falling = SubResource( 11 )
+anims/RESET = SubResource( 10 )
+anims/Spinning = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Cow-Sheet"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
