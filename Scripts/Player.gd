@@ -3,6 +3,7 @@ class_name Player
 
 signal player_fired_bullet(bullet, position, direction)
 signal player_health_changed(new_health)
+signal shake_camera(shake_time, shake_amount)
 
 export (PackedScene) var Bullet # Allows for bullet to be attached
 
@@ -91,6 +92,7 @@ func _unhandled_input(event):
 # Shooting code, should allow to disconnect before gun is picked up
 func shoot():
 	if attack_cooldown.is_stopped() and has_blaster:
+		emit_signal("shake_camera", .05, 1)
 		var bullet_instance = Bullet.instance()
 		var target = get_global_mouse_position()
 		# Bullet fires in the direction of the mouse
@@ -102,6 +104,7 @@ func shoot():
 func take_bullet_damage():
 	health.health -= 10
 	emit_signal("player_health_changed", health.health)
+	emit_signal("shake_camera", .1, 2)
 	if health.health == 0:
 		die()
 

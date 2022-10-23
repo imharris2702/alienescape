@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Misc/BulletManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/StartingArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
@@ -19,16 +21,20 @@ position = Vector2( -289, 75.75 )
 scale = Vector2( 0.485393, 0.512382 )
 current = true
 zoom = Vector2( 0.4, 0.4 )
+script = ExtResource( 2 )
 
 [node name="BulletManager" parent="." instance=ExtResource( 5 )]
 
 [node name="Enemies" type="Node" parent="."]
 
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 32, 51 )
+
 [node name="GunOnGround" parent="." instance=ExtResource( 11 )]
 position = Vector2( -208, 78.75 )
 scale = Vector2( 0.484375, 0.484375 )
 
-[node name="Node2D" parent="." instance=ExtResource( 7 )]
+[node name="StartingArea" parent="." instance=ExtResource( 7 )]
 position = Vector2( -284, 79.75 )
 scale = Vector2( 0.616552, 0.696552 )
 
