@@ -193,6 +193,7 @@ position = Vector2( 14, -8 )
 health = 1
 
 [node name="AI" parent="." instance=ExtResource( 6 )]
-visible = false
+player_idle_distance = 100
+player_shoot_distance = 100
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]

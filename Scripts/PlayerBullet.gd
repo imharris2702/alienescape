@@ -27,7 +27,7 @@ func _on_KillTimer_timeout():
 
 
 func _on_Bullet_area_entered(area):
-	if area.is_in_group("enemy") and !area.is_in_group("bullet"):
+	if area.is_in_group("enemy"):
 		$AnimationPlayer.play("Explode")
 		$Collider.set_deferred("disabled", true)
 		direction *= .03 # keep momentum slightly

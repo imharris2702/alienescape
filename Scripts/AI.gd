@@ -13,6 +13,8 @@ enum State {
 	ENGAGE
 }
 
+var pathfinding: Pathfinding
+
 var current_state: int = State.PATROL setget set_state
 var actor: KinematicBody2D = null
 
@@ -37,13 +39,17 @@ func _physics_process(delta):
 					patrol_timer.start()
 		State.ENGAGE:
 			if player != null:
-				var direction: Vector2 = player.position - actor.position
-				if direction.length() <= player_idle_distance:
+				var direction: Vector2 = Vector2.ZERO
+				var distance: Vector2 = player.position - actor.position
+				var path = pathfinding.get_new_path(actor.position, player.position)
+				if path.size() > 1:
+					direction = path[1] - actor.position
+				if distance.length() <= player_idle_distance:
 					actor.velocity = Vector2.ZERO
 				else:
 					actor.velocity = direction.normalized() * actor.movespeed
 					actor.move_and_slide(actor.velocity)
-				if direction.length() < player_shoot_distance and !player.isDead:
+				if distance.length() <= player_shoot_distance and !player.isDead:
 					actor.shoot(player)
 			else:
 				print("In engage state but no player")

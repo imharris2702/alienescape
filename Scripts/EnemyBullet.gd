@@ -22,7 +22,7 @@ func set_direction(direction: Vector2):
 	self.rotation = direction.angle()
 
 func _on_Bullet_area_entered(area):
-	if area.is_in_group("player") and !area.is_in_group("bullet"):
+	if area.is_in_group("player"):
 		$Collider.set_deferred("disabled", true)
 		direction *= .03 # keep momentum slightly
 		queue_free()
