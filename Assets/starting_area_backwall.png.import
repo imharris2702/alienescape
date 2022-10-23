@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/starting_area_backwall.png-bec5222baf5597fc89a8d119bfa70e0a.stex"
+path="res://.import/starting_area_backwall.png-585b7147e478181533cef2cc17bd7598.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/starting_area_backwall.png"
-dest_files=[ "res://.import/starting_area_backwall.png-bec5222baf5597fc89a8d119bfa70e0a.stex" ]
+source_file="res://assets/starting_area_backwall.png"
+dest_files=[ "res://.import/starting_area_backwall.png-585b7147e478181533cef2cc17bd7598.stex" ]
 
 [params]
 
