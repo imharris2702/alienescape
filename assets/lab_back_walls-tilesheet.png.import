@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lab_back_walls-tilesheet.png-a587d1b7ed8093645825c475d5129614.stex"
+path="res://.import/lab_back_walls-tilesheet.png-a8df79b3e394bea8fcdc0cdaa5396f25.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/lab_back_walls-tilesheet.png"
-dest_files=[ "res://.import/lab_back_walls-tilesheet.png-a587d1b7ed8093645825c475d5129614.stex" ]
+source_file="res://assets/lab_back_walls-tilesheet.png"
+dest_files=[ "res://.import/lab_back_walls-tilesheet.png-a8df79b3e394bea8fcdc0cdaa5396f25.stex" ]
 
 [params]
 

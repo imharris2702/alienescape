@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fbi0-Sheet.png-074068af6044766f8fd55babd0622e85.stex"
+path="res://.import/fbi0-Sheet.png-8aafb6f5d38527ff5fe06f27839e7a64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fbi0-Sheet.png"
-dest_files=[ "res://.import/fbi0-Sheet.png-074068af6044766f8fd55babd0622e85.stex" ]
+source_file="res://assets/fbi0-Sheet.png"
+dest_files=[ "res://.import/fbi0-Sheet.png-8aafb6f5d38527ff5fe06f27839e7a64.stex" ]
 
 [params]
 
