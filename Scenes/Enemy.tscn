@@ -141,7 +141,7 @@ graph_offset = Vector2( 69, -74.56 )
 [sub_resource type="RectangleShape2D" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 16 )
+extents = Vector2( 5, 16.8542 )
 
 [node name="Enemy" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 2 )
@@ -176,7 +176,7 @@ shape = SubResource( 16 )
 script = ExtResource( 3 )
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
-position = Vector2( 0, -1 )
+position = Vector2( 0, -0.180008 )
 scale = Vector2( 1, 0.960001 )
 shape = SubResource( 1 )
 
@@ -193,6 +193,7 @@ position = Vector2( 14, -8 )
 health = 1
 
 [node name="AI" parent="." instance=ExtResource( 6 )]
+visible = false
 player_idle_distance = 100
 player_shoot_distance = 100
 
