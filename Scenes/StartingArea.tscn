@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/JailBars-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Assets/wall.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/StartingArea.gd" type="Script" id=4]
 [ext_resource path="res://Assets/starting_area_backwall.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Misc/Wasd.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Misc/MouseClick.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Off"
@@ -109,11 +110,13 @@ scale = Vector2( 0.783719, 0.783719 )
 [node name="Wall" type="Sprite" parent="Cell"]
 position = Vector2( 66, -21 )
 scale = Vector2( 1.74457, 2.95373 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Wall2" type="Sprite" parent="Cell"]
 position = Vector2( -68, -22 )
 scale = Vector2( 1.74457, 2.95373 )
+z_index = -1
 texture = ExtResource( 2 )
 
 [node name="laser1" type="Sprite" parent="Cell"]
@@ -175,3 +178,7 @@ shape = SubResource( 4 )
 
 [node name="Wasd" parent="." instance=ExtResource( 6 )]
 position = Vector2( -126, -58 )
+
+[node name="MouseClick" parent="." instance=ExtResource( 7 )]
+position = Vector2( 315, 57 )
+z_index = -1
