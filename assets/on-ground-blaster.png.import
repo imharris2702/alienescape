@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/on-ground-blaster.png-4b1250451b876cff92c7519a079df3f8.stex"
+path="res://.import/on-ground-blaster.png-8c43a786e8b83f8dcb5a76f114cab109.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/on-ground-blaster.png"
-dest_files=[ "res://.import/on-ground-blaster.png-4b1250451b876cff92c7519a079df3f8.stex" ]
+source_file="res://Assets/on-ground-blaster.png"
+dest_files=[ "res://.import/on-ground-blaster.png-8c43a786e8b83f8dcb5a76f114cab109.stex" ]
 
 [params]
 
