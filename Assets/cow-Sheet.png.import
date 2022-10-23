@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cow-Sheet.png-75f5b73edb4c814c1dedc4a5f40ecaae.stex"
+path="res://.import/cow-Sheet.png-bd80e83d49755a3417175fae948e1757.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cow-Sheet.png"
-dest_files=[ "res://.import/cow-Sheet.png-75f5b73edb4c814c1dedc4a5f40ecaae.stex" ]
+source_file="res://Assets/cow-Sheet.png"
+dest_files=[ "res://.import/cow-Sheet.png-bd80e83d49755a3417175fae948e1757.stex" ]
 
 [params]
 

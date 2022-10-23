@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Enemy2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/StartingArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/UFOwCow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/environment-tileset.tres" type="TileSet" id=10]
 [ext_resource path="res://Scenes/Misc/BlasterPickup.tscn" type="PackedScene" id=11]
 
@@ -161,5 +162,8 @@ tile_data = PoolIntArray( -1114101, 14, 0, -1114100, 14, 0, -1114099, 14, 1, -11
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit area"]
 position = Vector2( 3553, -624.5 )
 shape = SubResource( 1 )
+
+[node name="UFOwCow" parent="Exit area/CollisionShape2D" instance=ExtResource( 9 )]
+position = Vector2( 80, -92.5 )
 
 [connection signal="area_entered" from="Exit area" to="." method="_on_Exit_area_area_entered"]
