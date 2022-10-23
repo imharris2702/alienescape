@@ -109,7 +109,6 @@ func take_bullet_damage():
 		die()
 
 func die():
-	print("Player has died")
 	animation_playback.travel("Death")
 	isDead = true
 	blaster_sprite.visible = false
