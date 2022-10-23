@@ -10,7 +10,7 @@
 [sub_resource type="Animation" id=7]
 resource_name = "Off"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Cell/lasers1:frame")
+tracks/0/path = NodePath("Cell/laser1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Cell/lasers2:frame")
+tracks/1/path = NodePath("Cell/laser2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -39,7 +39,7 @@ resource_name = "On"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Cell/lasers1:frame")
+tracks/0/path = NodePath("Cell/laser1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Cell/lasers2:frame")
+tracks/1/path = NodePath("Cell/laser2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -66,7 +66,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Cell/lasers1:frame")
+tracks/0/path = NodePath("Cell/laser1:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -116,14 +116,14 @@ position = Vector2( -68, -22 )
 scale = Vector2( 1.74457, 2.95373 )
 texture = ExtResource( 2 )
 
-[node name="lasers1" type="Sprite" parent="Cell"]
+[node name="laser1" type="Sprite" parent="Cell"]
 position = Vector2( -32, -2 )
 scale = Vector2( 1, 1.6931 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 3
 
-[node name="lasers2" type="Sprite" parent="Cell"]
+[node name="laser2" type="Sprite" parent="Cell"]
 position = Vector2( 32, -2 )
 scale = Vector2( 1, 1.6931 )
 texture = ExtResource( 1 )
