@@ -183,6 +183,8 @@ tracks/6/keys = {
 
 [sub_resource type="DynamicFont" id=3]
 size = 40
+outline_size = 2
+use_filter = true
 font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
@@ -258,6 +260,7 @@ margin_top = 82.5873
 margin_right = 490.111
 margin_bottom = 143.587
 rect_scale = Vector2( 0.363778, 0.363778 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 3 )
 text = "*Alien UFO heads towards Area 51*"
 
