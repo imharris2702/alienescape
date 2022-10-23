@@ -1,19 +1,20 @@
 extends Node2D
 
-export var t1: int = 4
-export var t2: int = 5
-export var t3: int = 8
+export var t1: int = 3
+export var t2: int = 4.5
+export var t3: int = 7
+export var t4: int = 10
 
 var transition_times
 var t_i = 0
-var anims = ["Idle", "ButtonPress", "Hacking"]
+var anims = ["Idle", "ButtonPress", "Hacking", "Idle 2"]
 var START_TIME
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node
 
 
 func _ready() -> void:
-	transition_times = [t1, t2, t3, 20]
+	transition_times = [t1, t2, t3, t4, 20]
 	START_TIME = Time.get_ticks_msec() * .001
 
 

@@ -182,7 +182,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="DynamicFont" id=3]
-size = 22
+size = 40
 font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
@@ -253,12 +253,12 @@ anims/FlyIn = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-margin_left = -72.1332
-margin_top = -104.889
-margin_right = 127.867
-margin_bottom = -64.8894
+margin_left = -104.889
+margin_top = 82.5873
+margin_right = 490.111
+margin_bottom = 143.587
+rect_scale = Vector2( 0.363778, 0.363778 )
 custom_fonts/normal_font = SubResource( 3 )
-text = "[ Text Box ]"
+text = "*Alien UFO heads towards Area 51*"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

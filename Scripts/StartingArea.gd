@@ -2,7 +2,7 @@ extends Node2D
 
 signal shake_camera(shake_time, shake_amount)
 
-export var timeClosed = 1
+export var timeClosed = 2
 var cellOpen = false
 
 onready var animation_player = $AnimationPlayer
