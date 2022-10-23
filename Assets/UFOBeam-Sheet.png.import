@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UFOBeam-Sheet.png-57f93b789096aa1109333532a98e2429.stex"
+path="res://.import/UFOBeam-Sheet.png-38a055bcccc5e852645a81fd07464de5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UFOBeam-Sheet.png"
-dest_files=[ "res://.import/UFOBeam-Sheet.png-57f93b789096aa1109333532a98e2429.stex" ]
+source_file="res://assets/UFOBeam-Sheet.png"
+dest_files=[ "res://.import/UFOBeam-Sheet.png-38a055bcccc5e852645a81fd07464de5.stex" ]
 
 [params]
 
