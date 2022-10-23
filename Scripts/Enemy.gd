@@ -61,11 +61,11 @@ func shoot(target: Node):
 		# Bullet fires in the direction of the target
 		if target.position.x > self.position.x:
 			sprite.flip_h = true
-			var direction_to_target = end_of_gun_right.global_position.direction_to(target.global_position).normalized()
+			var direction_to_target = end_of_gun_right.global_position.direction_to(target.position).normalized()
 			emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun_right.global_position, direction_to_target)
 		else:
 			sprite.flip_h = false
-			var direction_to_target = end_of_gun_left.global_position.direction_to(target.global_position).normalized()
+			var direction_to_target = end_of_gun_left.global_position.direction_to(target.position).normalized()
 			emit_signal("enemy_fired_bullet", bullet_instance, end_of_gun_left.global_position, direction_to_target)
 		attack_cooldown.start()
 	
