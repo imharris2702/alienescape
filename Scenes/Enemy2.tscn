@@ -144,7 +144,7 @@ extents = Vector2( 20.8354, 10 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 21.5417 )
 
-[node name="Enemy2" type="KinematicBody2D"]
+[node name="Enemy2" type="KinematicBody2D" groups=["enemy"]]
 script = ExtResource( 2 )
 Bullet = ExtResource( 3 )
 
