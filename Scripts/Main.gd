@@ -27,3 +27,10 @@ func _ready():
 	# FOR OPENING LEVEL ONLY
 	player.has_blaster = false
 	player.set_blaster_sprite(false)
+
+
+func _on_Exit_area_area_entered(area):
+	if area.is_in_group("player"):
+		# Function for end of game cinematic
+		pass
+		

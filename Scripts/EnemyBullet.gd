@@ -30,3 +30,9 @@ func _on_Bullet_area_entered(area):
 # Removes bullet from memory on timeout (can adjust time)
 func _on_KillTimer_timeout():
 	queue_free()
+
+
+func _on_Bullet_body_entered(body):
+	$Collider.set_deferred("disabled", true)
+	direction *= .03 # keep momentum slightly
+	queue_free()

@@ -36,3 +36,9 @@ func _on_Bullet_area_entered(area):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Explode":
 		queue_free()
+
+
+func _on_Bullet_body_entered(body):
+	$AnimationPlayer.play("Explode")
+	$Collider.set_deferred("disabled", true)
+	direction *= .03 # keep momentum slightly
