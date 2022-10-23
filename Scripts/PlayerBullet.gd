@@ -39,6 +39,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Bullet_body_entered(body):
-	$AnimationPlayer.play("Explode")
-	$Collider.set_deferred("disabled", true)
-	direction *= .03 # keep momentum slightly
+	if !body.is_in_group("player") and !body.is_in_group("enemy"):
+		$AnimationPlayer.play("Explode")
+		$Collider.set_deferred("disabled", true)
+		direction *= .03 # keep momentum slightly

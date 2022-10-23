@@ -33,6 +33,7 @@ func _on_KillTimer_timeout():
 
 
 func _on_Bullet_body_entered(body):
-	$Collider.set_deferred("disabled", true)
-	direction *= .03 # keep momentum slightly
-	queue_free()
+	if !body.is_in_group("player") and !body.is_in_group("enemy"):
+		$Collider.set_deferred("disabled", true)
+		direction *= .03 # keep momentum slightly
+		queue_free()

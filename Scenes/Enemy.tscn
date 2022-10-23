@@ -167,7 +167,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 5 )
 
-[node name="Collider2D" type="CollisionShape2D" parent="."]
+[node name="Collider2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 position = Vector2( 0, 13 )
 scale = Vector2( 0.483436, -0.29773 )
 shape = SubResource( 16 )
@@ -193,7 +193,6 @@ position = Vector2( 14, -8 )
 health = 1
 
 [node name="AI" parent="." instance=ExtResource( 6 )]
-visible = false
 player_idle_distance = 100
 player_shoot_distance = 100
 

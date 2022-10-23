@@ -27,6 +27,7 @@ onready var sprite = $Sprite # get the Sprite node
 onready var attack_cooldown = $AttackCooldown
 onready var blaster_sprite = get_node("Sprite/BlasterSprite")
 onready var health = $Health # Get health node
+onready var health_regen = $HealthRegenCooldown
 
 func _ready():
 	#blaster_sprite.visible = has_blaster
@@ -107,6 +108,9 @@ func take_bullet_damage():
 	emit_signal("shake_camera", .1, 2)
 	if health.health == 0:
 		die()
+	else:
+		health_regen.start()
+	
 
 func die():
 	animation_playback.travel("Death")
@@ -123,3 +127,10 @@ func set_blaster_sprite(input: bool):
 		blaster_sprite.visible = true
 	else:
 		blaster_sprite.visible = false
+
+
+func _on_HealthRegenCooldown_timeout():
+	health.health += 10
+	emit_signal("player_health_changed", health.health)
+	if health.health != 100:
+		health_regen.start()

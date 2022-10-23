@@ -255,7 +255,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 7 )
 
-[node name="Collider2D" type="CollisionShape2D" parent="."]
+[node name="Collider2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2( 0, 11 )
 scale = Vector2( 0.561397, -0.417731 )
 shape = SubResource( 2 )
@@ -284,4 +284,9 @@ attenuation = 2.63902
 
 [node name="Health" parent="." instance=ExtResource( 8 )]
 
+[node name="HealthRegenCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]
+[connection signal="timeout" from="HealthRegenCooldown" to="." method="_on_HealthRegenCooldown_timeout"]
