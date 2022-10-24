@@ -47,7 +47,8 @@ func _on_Exit_area_area_entered(area):
 
 
 func _on_Intro_finished():
-	music_loop.play()
+	if !player.isDead:
+		music_loop.play()
 
 
 func _on_Player_player_died():

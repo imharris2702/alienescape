@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/fbi0-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy2.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/EnemyHitBoxArea.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Misc/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/AI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/enemyDeath.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=35]
 resource_name = "Death"
@@ -198,5 +199,9 @@ health = 5
 [node name="AI" parent="." instance=ExtResource( 6 )]
 player_idle_distance = 160
 player_shoot_distance = 160
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -25.0
 
 [connection signal="area_entered" from="HitBoxArea" to="HitBoxArea" method="_on_HitBoxArea_area_entered"]
