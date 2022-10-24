@@ -6,7 +6,7 @@ export (PackedScene) var Bullet # Allows for bullet to be attached
 
 # physics vars
 var velocity : Vector2 = Vector2()
-var movespeed : int = 20
+var movespeed : int = 40
 var isDead : bool = false
 
 

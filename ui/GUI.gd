@@ -4,6 +4,8 @@ onready var health_bar = $MarginContainer/Rows/TopRow/HealthSection/HealthBar
 onready var health_tween = $MarginContainer/Rows/TopRow/HealthSection/HealthTween
 onready var death_vignette = $DeathVignette.material
 onready var death_tween = $DeathVignette/DeathTween
+onready var game_over_text = $MarginContainer/Rows/MiddleRow/HBoxContainer/GameOverText
+onready var restart_button = $MarginContainer/Rows/MiddleRow/HBoxContainer2/RestartButton
 
 var original_color = Color("#0bbe03")
 var highlight_color = Color("#a2d79e")
@@ -22,16 +24,22 @@ func set_new_health_value(new_health: int):
 	health_tween.interpolate_property(bar_style, "bg_color", original_color, highlight_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	health_tween.interpolate_property(bar_style, "bg_color", highlight_color, original_color, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.2)
 	health_tween.start()
-#	if new_health <= 0:
-#		print('death tween start')
-#		death_tween.targeting_method()
+	if new_health <= 0:
+		show_game_over_ui()
 		
 func _physics_process(delta):
-	if player.isDead and death_vignette.get_shader_param("multiplier") > -.3:
+	if player.isDead and death_vignette.get_shader_param("multiplier") > -.05:
 		death_vignette.set_shader_param("multiplier", death_vignette.get_shader_param("multiplier") - .01)
 		death_vignette.set_shader_param("softness", death_vignette.get_shader_param("softness") - .001)
+		
+func show_game_over_ui():
+	game_over_text.visible = true
+	restart_button.visible = true
+	restart_button.disabled = false
 
 
-#func _on_DeathTween_tween_step(object: Object, key: NodePath, elapsed: float, value: Object) -> void:
-#	print("death tween step called")
-#	death_vignette.material.set_shader_param("multiplier", death_vignette.get_material().get_shader_param("multiplier") - .01)
+func _on_RestartButton_pressed():
+	print("Button pressed")
+	death_vignette.set_shader_param("multiplier", 1)
+	death_vignette.set_shader_param("softness", 1)
+	get_tree().change_scene("res://Scenes/Main.tscn")

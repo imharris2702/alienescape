@@ -6,7 +6,7 @@ export (PackedScene) var Bullet # Allows for bullet to be attached
 
 # physics vars
 var velocity : Vector2 = Vector2()
-var movespeed : int = 8
+var movespeed : int = 16
 var isDead : bool = false
 
 onready var animation_playback = $AnimationTree["parameters/playback"] # get the AnimationTree node

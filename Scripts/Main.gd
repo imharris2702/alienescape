@@ -10,6 +10,7 @@ onready var ground = $Ground
 onready var pathfinding = $Pathfinding
 onready var music_loop = $CombatLoop
 onready var intro_music = $Intro
+onready var game_over = $GameOver
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,5 +47,11 @@ func _on_Exit_area_area_entered(area):
 
 
 func _on_Intro_finished():
-	print("Intro finished")
 	music_loop.play()
+
+
+func _on_Player_player_died():
+	intro_music.stop()
+	music_loop.stop()
+	if !game_over.is_playing():
+		game_over.play()

@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "PlayerBullet",
 "language": "GDScript",
 "path": "res://Scripts/PlayerBullet.gd"
+}, {
+"base": "Sprite",
+"class": "Reticule",
+"language": "GDScript",
+"path": "res://Scripts/Reticule.gd"
 } ]
 _global_script_class_icons={
 "EnemyBullet": "",
 "Pathfinding": "",
 "Player": "",
-"PlayerBullet": ""
+"PlayerBullet": "",
+"Reticule": ""
 }
 
 [application]

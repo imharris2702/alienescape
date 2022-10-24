@@ -4,6 +4,7 @@ class_name Player
 signal player_fired_bullet(bullet, position, direction)
 signal player_health_changed(new_health)
 signal shake_camera(shake_time, shake_amount)
+signal player_died()
 
 export (PackedScene) var Bullet # Allows for bullet to be attached
 
@@ -28,6 +29,7 @@ onready var attack_cooldown = $AttackCooldown
 onready var blaster_sprite = get_node("Sprite/BlasterSprite")
 onready var health = $Health # Get health node
 onready var health_regen = $HealthRegenCooldown
+onready var reticule = $Reticule
 
 func _ready():
 	#blaster_sprite.visible = has_blaster
@@ -116,7 +118,8 @@ func die():
 	animation_playback.travel("Death")
 	isDead = true
 	blaster_sprite.visible = false
-	
+	emit_signal("player_died")
+	reticule.show_mouse()
 
 func pickup_blaster():
 	has_blaster = true
