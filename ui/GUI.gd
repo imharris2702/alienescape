@@ -6,6 +6,7 @@ onready var death_vignette = $DeathVignette.material
 onready var death_tween = $DeathVignette/DeathTween
 onready var game_over_text = $MarginContainer/Rows/MiddleRow/HBoxContainer/GameOverText
 onready var restart_button = $MarginContainer/Rows/MiddleRow/HBoxContainer2/RestartButton
+onready var quit_button = $MarginContainer/Rows/MiddleRow/HBoxContainer2/QuitButton
 
 var original_color = Color("#0bbe03")
 var highlight_color = Color("#a2d79e")
@@ -36,10 +37,16 @@ func show_game_over_ui():
 	game_over_text.visible = true
 	restart_button.visible = true
 	restart_button.disabled = false
+	quit_button.visible = true
+	quit_button.disabled = false
 
 
 func _on_RestartButton_pressed():
-	print("Button pressed")
 	death_vignette.set_shader_param("multiplier", 1)
 	death_vignette.set_shader_param("softness", 1)
-	get_tree().change_scene("res://Scenes/Main.tscn")
+	var current_scene = get_tree().get_current_scene().get_filename()
+	get_tree().change_scene(current_scene)
+
+
+func _on_QuitButton_pressed():
+	get_tree().quit()

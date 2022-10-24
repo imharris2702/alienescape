@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ui/GUI.gd" type="Script" id=1]
 [ext_resource path="res://assets/GIL_____.TTF" type="DynamicFontData" id=2]
@@ -45,6 +45,24 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.027451, 0.498039, 0.054902, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="DynamicFont" id=10]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.992157, 0.054902, 0.054902, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.698039, 0.0392157, 0.0392157, 1 )
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -161,15 +179,15 @@ mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Rows/MiddleRow/HBoxContainer2"]
-margin_right = 445.0
+margin_right = 295.0
 margin_bottom = 58.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="RestartButton" type="Button" parent="MarginContainer/Rows/MiddleRow/HBoxContainer2"]
 visible = false
-margin_left = 299.0
-margin_right = 595.0
+margin_left = 224.0
+margin_right = 445.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 6 )
@@ -180,10 +198,29 @@ action_mode = 0
 text = "RESPAWN"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Rows/MiddleRow/HBoxContainer2"]
-margin_left = 449.0
-margin_right = 895.0
+margin_left = 299.0
+margin_right = 595.0
 margin_bottom = 58.0
 mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="QuitButton" type="Button" parent="MarginContainer/Rows/MiddleRow/HBoxContainer2"]
+visible = false
+margin_left = 539.0
+margin_right = 715.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+disabled = true
+action_mode = 0
+text = "QUIT"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Rows/MiddleRow/HBoxContainer2"]
+margin_left = 599.0
+margin_right = 895.0
+margin_bottom = 58.0
 size_flags_horizontal = 3
 
 [node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
@@ -202,4 +239,5 @@ mouse_filter = 2
 [node name="DeathTween" type="Tween" parent="DeathVignette"]
 
 [connection signal="pressed" from="MarginContainer/Rows/MiddleRow/HBoxContainer2/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Rows/MiddleRow/HBoxContainer2/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="tween_step" from="DeathVignette/DeathTween" to="." method="_on_DeathTween_tween_step"]
