@@ -11,6 +11,7 @@ onready var pathfinding = $Pathfinding
 onready var music_loop = $CombatLoop
 onready var intro_music = $Intro
 onready var game_over = $GameOver
+onready var ufowcow = $"Exit area/CollisionShape2D/UFOwCow"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,10 +43,11 @@ func _ready():
 
 func _on_Exit_area_area_entered(area):
 	if area.is_in_group("player"):
+		print("victory")
 		music_loop.stop()
+		get_tree().change_scene("res://Scenes/CowScene.tscn")
 		
-
-
+		
 func _on_Intro_finished():
 	if !player.isDead:
 		music_loop.play()

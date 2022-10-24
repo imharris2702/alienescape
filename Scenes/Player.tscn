@@ -263,7 +263,7 @@ shape = SubResource( 2 )
 [node name="HitBoxArea" type="Area2D" parent="." groups=["player"]]
 script = ExtResource( 4 )
 
-[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea"]
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea" groups=["player"]]
 position = Vector2( 0, -3 )
 scale = Vector2( 0.702547, 0.99184 )
 shape = SubResource( 3 )

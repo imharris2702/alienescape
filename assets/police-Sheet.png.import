@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/police-Sheet.png-abd4a325ea5a0a359f5dead89c1ba7bf.stex"
+path="res://.import/police-Sheet.png-f5247ec423fb46cdaf8fca9c8437d84e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/police-Sheet.png"
-dest_files=[ "res://.import/police-Sheet.png-abd4a325ea5a0a359f5dead89c1ba7bf.stex" ]
+source_file="res://Assets/police-Sheet.png"
+dest_files=[ "res://.import/police-Sheet.png-f5247ec423fb46cdaf8fca9c8437d84e.stex" ]
 
 [params]
 

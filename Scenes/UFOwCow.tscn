@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Hover.gd" type="Script" id=1]
 [ext_resource path="res://Assets/alienship.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UFOBeam-Sheet.png" type="Texture" id=3]
 [ext_resource path="res://Assets/cow-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/UFOwCow.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -22,6 +23,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "MoveUFO"
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -35,6 +39,79 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -140, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "MoveUFO"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -120, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "MoveUFOUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -120, 0 ), Vector2( -120, -60 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -140, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -168,9 +245,11 @@ graph_offset = Vector2( 0, -15 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [node name="UFOwCow" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Alienship" type="Sprite" parent="."]
-scale = Vector2( 2.92125, 2.92125 )
+position = Vector2( -140, 0 )
+scale = Vector2( 2.94443, 3.12602 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 hover_speed = 2.0
@@ -182,18 +261,28 @@ scale = Vector2( 0.449663, 0.449663 )
 z_index = -1
 texture = ExtResource( 3 )
 hframes = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Alienship/UfoBeam-Sheet"]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
+anims/MoveUFO = SubResource( 15 )
 anims/RESET = SubResource( 2 )
 
+[node name="UFOAnimationPlayer" type="AnimationPlayer" parent="Alienship"]
+autoplay = "Idle"
+anims/Idle = SubResource( 18 )
+anims/MoveUFO = SubResource( 16 )
+anims/MoveUFOUp = SubResource( 19 )
+anims/RESET = SubResource( 17 )
+
 [node name="Cow-Sheet" type="Sprite" parent="."]
-position = Vector2( 0, 55 )
-rotation = 4.48709
+position = Vector2( 0, 45 )
+rotation = 5.82735
 scale = Vector2( 1.00453, 1.00897 )
 texture = ExtResource( 4 )
 hframes = 6
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cow-Sheet"]
 anims/Death = SubResource( 3 )
@@ -206,3 +295,5 @@ tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 9 )
+
+[connection signal="animation_finished" from="Alienship/UFOAnimationPlayer" to="." method="_on_UFOAnimationPlayer_animation_finished"]
