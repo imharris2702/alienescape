@@ -17,6 +17,7 @@ onready var attack_cooldown = $AttackCooldown
 onready var health = $Health
 onready var ai = $AI
 onready var death_sound = $DeathSound
+onready var gunshot = $Gunshot
 
 func _ready():
 	ai.initialize(self)
@@ -58,6 +59,7 @@ func die():
 
 func shoot(target: Node):
 	if attack_cooldown.is_stopped():
+		gunshot.play()
 		animation_playback.travel("Shoot")
 		var bullet_instance = Bullet.instance()
 		# Bullet fires in the direction of the target
